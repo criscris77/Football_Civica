@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: football_source
+    description: ""
+    database: alumno14_dev_bronze_db
+    schema: football
+    tables:
+      - name: goalscorers
+        description: ""
+        columns:
+          - name: date
+            data_type: date
+            description: ""
+          - name: home_team
+            data_type: varchar
+            description: ""
+          - name: away_team
+            data_type: varchar
+            description: ""
+          - name: team
+            data_type: varchar
+            description: ""
+          - name: scorer
+            data_type: varchar
+            description: ""
+          - name: minute
+            data_type: varchar
+            description: ""
+          - name: own_goal
+            data_type: boolean
+            description: ""
+          - name: penalty
+            data_type: boolean
+            description: ""
