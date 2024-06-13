@@ -33,3 +33,318 @@ sources:
           - name: penalty
             data_type: boolean
             description: ""
+      - name: results
+        description: ""
+        columns:
+          - name: date
+            data_type: date
+            description: ""
+          - name: home_team
+            data_type: varchar
+            description: ""
+          - name: away_team
+            data_type: varchar
+            description: ""
+          - name: home_score
+            data_type: varchar
+            description: ""
+          - name: away_score
+            data_type: varchar
+            description: ""
+          - name: tournament
+            data_type: varchar
+            description: ""
+          - name: city
+            data_type: varchar
+            description: ""
+          - name: country
+            data_type: varchar
+            description: ""
+          - name: neutral
+            data_type: boolean
+            description: ""
+      - name: shootouts
+        description: ""
+        columns:
+          - name: date
+            data_type: date
+            description: ""
+          - name: home_team
+            data_type: varchar
+            description: ""
+          - name: away_team
+            data_type: varchar
+            description: ""
+          - name: winner
+            data_type: varchar
+            description: ""
+          - name: first_shooter
+            data_type: varchar
+            description: ""
+      - name: stadistics_2022
+        description: ""
+        columns:
+          - name: team1
+            data_type: varchar
+            description: ""
+          - name: team2
+            data_type: varchar
+            description: ""
+          - name: possession_team1
+            data_type: varchar
+            description: ""
+          - name: possession_team2
+            data_type: varchar
+            description: ""
+          - name: possession_in_contest
+            data_type: varchar
+            description: ""
+          - name: number_of_goals_team1
+            data_type: number
+            description: ""
+          - name: number_of_goals_team2
+            data_type: number
+            description: ""
+          - name: date
+            data_type: varchar
+            description: ""
+          - name: hour
+            data_type: varchar
+            description: ""
+          - name: category
+            data_type: varchar
+            description: ""
+          - name: total_attempts_team1
+            data_type: number
+            description: ""
+          - name: total_attempts_team2
+            data_type: number
+            description: ""
+          - name: conceded_team1
+            data_type: number
+            description: ""
+          - name: conceded_team2
+            data_type: number
+            description: ""
+          - name: goal_inside_the_penalty_area_team1
+            data_type: number
+            description: ""
+          - name: goal_inside_the_penalty_area_team2
+            data_type: number
+            description: ""
+          - name: goal_outside_the_penalty_area_team1
+            data_type: number
+            description: ""
+          - name: goal_outside_the_penalty_area_team2
+            data_type: number
+            description: ""
+          - name: assists_team1
+            data_type: number
+            description: ""
+          - name: assists_team2
+            data_type: number
+            description: ""
+          - name: on_target_attempts_team1
+            data_type: number
+            description: ""
+          - name: on_target_attempts_team2
+            data_type: number
+            description: ""
+          - name: off_target_attempts_team1
+            data_type: number
+            description: ""
+          - name: off_target_attempts_team2
+            data_type: number
+            description: ""
+          - name: attempts_inside_the_penalty_area_team1
+            data_type: number
+            description: ""
+          - name: attempts_inside_the_penalty_area__team2
+            data_type: number
+            description: ""
+          - name: attempts_outside_the_penalty_area__team1
+            data_type: number
+            description: ""
+          - name: attempts_outside_the_penalty_area__team2
+            data_type: number
+            description: ""
+          - name: left_channel_team1
+            data_type: number
+            description: ""
+          - name: left_channel_team2
+            data_type: number
+            description: ""
+          - name: left_inside_channel_team1
+            data_type: number
+            description: ""
+          - name: left_inside_channel_team2
+            data_type: number
+            description: ""
+          - name: central_channel_team1
+            data_type: number
+            description: ""
+          - name: central_channel_team2
+            data_type: number
+            description: ""
+          - name: right_inside_channel_team1
+            data_type: number
+            description: ""
+          - name: right_inside_channel_team2
+            data_type: number
+            description: ""
+          - name: right_channel_team1
+            data_type: number
+            description: ""
+          - name: right_channel_team2
+            data_type: number
+            description: ""
+          - name: total_offers_to_receive_team1
+            data_type: number
+            description: ""
+          - name: total_offers_to_receive_team2
+            data_type: number
+            description: ""
+          - name: inbehind_offers_to_receive_team1
+            data_type: number
+            description: ""
+          - name: inbehind_offers_to_receive_team2
+            data_type: number
+            description: ""
+          - name: inbetween_offers_to_receive_team1
+            data_type: number
+            description: ""
+          - name: inbetween_offers_to_receive_team2
+            data_type: number
+            description: ""
+          - name: infront_offers_to_receive_team1
+            data_type: number
+            description: ""
+          - name: infront_offers_to_receive_team2
+            data_type: number
+            description: ""
+          - name: receptions_between_midfield_and_defensive_lines_team1
+            data_type: number
+            description: ""
+          - name: receptions_between_midfield_and_defensive_lines_team2
+            data_type: number
+            description: ""
+          - name: attempted_line_breaks_team1
+            data_type: number
+            description: ""
+          - name: attempted_line_breaks_team2
+            data_type: number
+            description: ""
+          - name: completed_line_breaksteam1
+            data_type: number
+            description: ""
+          - name: completed_line_breaks_team2
+            data_type: number
+            description: ""
+          - name: attempted_defensive_line_breaks_team1
+            data_type: number
+            description: ""
+          - name: attempted_defensive_line_breaks_team2
+            data_type: number
+            description: ""
+          - name: completed_defensive_line_breaksteam1
+            data_type: number
+            description: ""
+          - name: completed_defensive_line_breaks_team2
+            data_type: number
+            description: ""
+          - name: yellow_cards_team1
+            data_type: number
+            description: ""
+          - name: yellow_cards_team2
+            data_type: number
+            description: ""
+          - name: red_cards_team1
+            data_type: number
+            description: ""
+          - name: red_cards_team2
+            data_type: number
+            description: ""
+          - name: fouls_against_team1
+            data_type: number
+            description: ""
+          - name: fouls_against_team2
+            data_type: number
+            description: ""
+          - name: offsides_team1
+            data_type: number
+            description: ""
+          - name: offsides_team2
+            data_type: number
+            description: ""
+          - name: passes_team1
+            data_type: number
+            description: ""
+          - name: passes_team2
+            data_type: number
+            description: ""
+          - name: passes_completed_team1
+            data_type: number
+            description: ""
+          - name: passes_completed_team2
+            data_type: number
+            description: ""
+          - name: crosses_team1
+            data_type: number
+            description: ""
+          - name: crosses_team2
+            data_type: number
+            description: ""
+          - name: crosses_completed_team1
+            data_type: number
+            description: ""
+          - name: crosses_completed_team2
+            data_type: number
+            description: ""
+          - name: switches_of_play_completed_team1
+            data_type: number
+            description: ""
+          - name: switches_of_play_completed_team2
+            data_type: number
+            description: ""
+          - name: corners_team1
+            data_type: number
+            description: ""
+          - name: corners_team2
+            data_type: number
+            description: ""
+          - name: free_kicks_team1
+            data_type: number
+            description: ""
+          - name: free_kicks_team2
+            data_type: number
+            description: ""
+          - name: penalties_scored_team1
+            data_type: number
+            description: ""
+          - name: penalties_scored_team2
+            data_type: number
+            description: ""
+          - name: goal_preventions_team1
+            data_type: number
+            description: ""
+          - name: goal_preventions_team2
+            data_type: number
+            description: ""
+          - name: own_goals_team1
+            data_type: number
+            description: ""
+          - name: own_goals_team2
+            data_type: number
+            description: ""
+          - name: forced_turnovers_team1
+            data_type: number
+            description: ""
+          - name: forced_turnovers_team2
+            data_type: number
+            description: ""
+          - name: defensive_pressures_applied_team1
+            data_type: number
+            description: ""
+          - name: defensive_pressures_applied_team2
+            data_type: number
+            description: ""      
