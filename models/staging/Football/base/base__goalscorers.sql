@@ -9,15 +9,14 @@ source as (
 renamed as (
 
     select
+        {{ dbt_utils.generate_surrogate_key(['date','home_team','away_team']) }} as game_id,
+        {{ dbt_utils.generate_surrogate_key(['date','home_team','away_team','scorer','minute']) }} as score_id,
         date,
         home_team,
         away_team,
         team,
         scorer,
-        minute,
-        own_goal,
-        penalty
-
+        minute
     from source
 
 )

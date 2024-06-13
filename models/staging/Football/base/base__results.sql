@@ -9,6 +9,7 @@ source as (
 renamed as (
 
     select
+        {{ dbt_utils.generate_surrogate_key(['date','home_team','away_team']) }} as game_id,
         date,
         home_team,
         away_team,
@@ -16,11 +17,9 @@ renamed as (
         away_score,
         tournament,
         city,
-        country,
-        neutral
-
+        country
     from source
-
+    where tournament in ('Copa América','UEFA Euro','FIFA World Cup')
 )
 
 select * from renamed
