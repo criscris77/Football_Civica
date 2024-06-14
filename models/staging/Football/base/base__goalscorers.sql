@@ -16,7 +16,7 @@ renamed as (
         away_team,
         team,
         scorer,
-        minute
+        CAST(minute as Number) as minute
     from source
 
 )

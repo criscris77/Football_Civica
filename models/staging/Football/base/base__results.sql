@@ -13,8 +13,8 @@ renamed as (
         TO_CHAR(date, 'DD/MM/YYYY') as date,
         home_team,
         away_team,
-        home_score,
-        away_score,
+        CAST(home_score AS NUMBER) AS home_score,
+        CAST(away_score AS NUMBER) AS away_score,
         tournament,
         city,
         country
