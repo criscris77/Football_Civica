@@ -58,7 +58,7 @@ models:
         data_type: number
         description: "Minute in which the goal was scored."
 
-  - name: stg_football__results
+  - name: stg_football__games
     description: "Contains the results of each game."
     columns:
       - name: game_id

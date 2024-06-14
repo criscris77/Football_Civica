@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ ref('base__results') }}
+    select *  from {{ ref('stg_football__games') }}
 
 ),
 

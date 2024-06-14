@@ -72,6 +72,62 @@ models:
         data_type: varchar
         description: "Name of the tournament."
 
+  - name: dim_games
+    description: "Dimension table containing information about football games."
+    columns:
+      - name: game_id
+        data_type: varchar
+        description: "Unique identifier for the game."
+
+      - name: date
+        data_type: varchar
+        description: "Date of the game."
+
+      - name: home_team
+        data_type: varchar
+        description: "Name of the home team."
+
+      - name: away_team
+        data_type: varchar
+        description: "Name of the away team."
+
+      - name: home_score
+        data_type: number
+        description: "Score of the home team."
+
+      - name: away_score
+        data_type: number
+        description: "Score of the away team."
+
+      - name: tournament
+        data_type: varchar
+        description: "Name of the tournament."
+
+      - name: city
+        data_type: varchar
+        description: "City where the game was played."
+
+      - name: country
+        data_type: varchar
+        description: "Country where the game was played."
+
+      - name: score_id
+        data_type: varchar
+        description: "Identifier for the score."
+
+      - name: team_score
+        data_type: varchar
+        description: "Name of the team that scored."
+
+      - name: scorer
+        data_type: varchar
+        description: "Name of the player who scored."
+
+      - name: minute
+        data_type: number
+        description: "Minute in which the goal was scored."
+
+
   - name: fct_games
     description: "Fact table containing detailed information about football games."
     columns:
