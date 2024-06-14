@@ -20,18 +20,21 @@ models:
   +transient: false
   football_civica:
     staging:
-      +materialized: view
-      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
       Football:
+        +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
+        +materialized: view
         base:
           +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
+          +materialized: view
     intermediate:
-      +materialized: view
-      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
+        +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
+        +materialized: view
     marts:
-      +schema: core
-      +materialized: table
-      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
+        +materialized: table
+        +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
+        core:
+          +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
+          +materialized: view
 
 seeds:
   +schema: seed_data
