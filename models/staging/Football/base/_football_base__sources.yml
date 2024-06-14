@@ -77,30 +77,7 @@ sources:
           - name: neutral
             data_type: boolean
             description: "Indicates if the match was played at a neutral venue (true/false)."
-      - name: shootouts
-        description: "Details of shootouts in international football matches."
-        columns:
-          - name: date
-            data_type: date
-            description: "Date of the shootout in YYYY-MM-DD format."
-            tests:
-              - not_null
-          - name: home_team
-            data_type: varchar
-            description: "Name of the home team."
-            tests:
-              - not_null
-          - name: away_team
-            data_type: varchar
-            description: "Name of the away team."
-            tests:
-              - not_null
-          - name: winner
-            data_type: varchar
-            description: "Name of the team that won the shootout."
-          - name: first_shooter
-            data_type: varchar
-            description: "Name of the team that took the first shot in the shootout."
+      
       - name: stadistics_2022
         description: "Statistics from the 2022 international football matches."
         columns:
