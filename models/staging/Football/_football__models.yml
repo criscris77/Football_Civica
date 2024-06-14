@@ -2,162 +2,541 @@ version: 2
 
 models:
   - name: stg_football__city
-    description: ""
+    description: "Contains data related to cities."
     columns:
       - name: city_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the city."
 
       - name: city
         data_type: varchar
-        description: ""
+        description: "Name of the city."
 
   - name: stg_football__country
-    description: ""
+    description: "Contains data related to countries."
     columns:
       - name: country_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the country."
 
       - name: country
         data_type: varchar
-        description: ""
+        description: "Name of the country."
 
   - name: stg_football__goalscorers
-    description: ""
+    description: "Contains data on goalscorers for each game."
     columns:
       - name: game_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the game."
 
       - name: score_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the score."
 
       - name: date
         data_type: date
-        description: ""
+        description: "Date of the game."
 
       - name: home_team
         data_type: varchar
-        description: ""
+        description: "Name of the home team."
 
       - name: away_team
         data_type: varchar
-        description: ""
+        description: "Name of the away team."
 
       - name: team
         data_type: varchar
-        description: ""
+        description: "Name of the team that scored."
 
       - name: scorer
         data_type: varchar
-        description: ""
+        description: "Name of the player who scored."
 
       - name: minute
-        data_type: varchar
-        description: ""
+        data_type: number
+        description: "Minute in which the goal was scored."
 
   - name: stg_football__results
-    description: ""
+    description: "Contains the results of each game."
     columns:
       - name: game_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the game."
 
       - name: date
         data_type: varchar
-        description: ""
+        description: "Date of the game."
 
       - name: home_team
         data_type: varchar
-        description: ""
+        description: "Name of the home team."
 
       - name: away_team
         data_type: varchar
-        description: ""
+        description: "Name of the away team."
 
       - name: home_score
-        data_type: varchar
-        description: ""
+        data_type: number
+        description: "Score of the home team."
 
       - name: away_score
-        data_type: varchar
-        description: ""
+        data_type: number
+        description: "Score of the away team."
 
       - name: tournament
         data_type: varchar
-        description: ""
+        description: "Name of the tournament."
 
       - name: city
         data_type: varchar
-        description: ""
+        description: "City where the game was played."
 
       - name: country
         data_type: varchar
-        description: ""
+        description: "Country where the game was played."
 
       - name: score_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the score."
 
       - name: team_score
         data_type: varchar
-        description: ""
+        description: "Name of the team that scored."
 
       - name: scorer
         data_type: varchar
-        description: ""
+        description: "Name of the player who scored."
 
       - name: minute
         data_type: number
-        description: ""
+        description: "Minute in which the goal was scored."
 
   - name: stg_football__teams
-    description: ""
+    description: "Contains data related to football teams."
     columns:
       - name: team_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the team."
 
       - name: team
         data_type: varchar
-        description: ""
+        description: "Name of the team."
 
   - name: stg_football__time
-    description: ""
+    description: "Contains timestamp data related to football games."
     columns:
       - name: date_timezone
         data_type: timestamp_tz
-        description: ""
+        description: "Date and time with timezone information."
 
       - name: date
         data_type: varchar
-        description: ""
+        description: "Date of the game."
 
       - name: date_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the date."
 
       - name: year
         data_type: number
-        description: ""
+        description: "Year of the game."
 
       - name: month
         data_type: number
-        description: ""
+        description: "Month of the game."
 
       - name: day
         data_type: number
-        description: ""
+        description: "Day of the game."
 
   - name: stg_football__tournaments
-    description: ""
+    description: "Contains data related to football tournaments."
     columns:
       - name: tournament_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the tournament."
 
       - name: tournament
         data_type: varchar
-        description: ""
+        description: "Name of the tournament."
+
+
+  - name: stg_football__shootouts
+    description: "Contains data on shootouts."
+    columns:
+      - name: date
+        data_type: date
+        description: "Date of the shootout."
+
+      - name: home_team
+        data_type: varchar
+        description: "Name of the home team."
+
+      - name: away_team
+        data_type: varchar
+        description: "Name of the away team."
+
+      - name: winner
+        data_type: varchar
+        description: "Name of the team that won the shootout."
+
+      - name: first_shooter
+        data_type: varchar
+        description: "Name of the first shooter in the shootout."
+
+  - name: stg_football__stadistics_2022
+    description: "Contains statistics for games played in 2022."
+    columns:
+      - name: team1
+        data_type: varchar
+        description: "Name of the first team."
+
+      - name: team2
+        data_type: varchar
+        description: "Name of the second team."
+
+      - name: possession_team1
+        data_type: varchar
+        description: "Possession percentage of the first team."
+
+      - name: possession_team2
+        data_type: varchar
+        description: "Possession percentage of the second team."
+
+      - name: possession_in_contest
+        data_type: varchar
+        description: "Percentage of possession in contest."
+
+      - name: number_of_goals_team1
+        data_type: number
+        description: "Number of goals scored by the first team."
+
+      - name: number_of_goals_team2
+        data_type: number
+        description: "Number of goals scored by the second team."
+
+      - name: date
+        data_type: varchar
+        description: "Date of the game."
+
+      - name: hour
+        data_type: varchar
+        description: "Hour of the game."
+
+      - name: category
+        data_type: varchar
+        description: "Category of the game."
+
+      - name: total_attempts_team1
+        data_type: number
+        description: "Total attempts made by the first team."
+
+      - name: total_attempts_team2
+        data_type: number
+        description: "Total attempts made by the second team."
+
+      - name: conceded_team1
+        data_type: number
+        description: "Total goals conceded by the first team."
+
+      - name: conceded_team2
+        data_type: number
+        description: "Total goals conceded by the second team."
+
+      - name: goal_inside_the_penalty_area_team1
+        data_type: number
+        description: "Goals scored inside the penalty area by the first team."
+
+      - name: goal_inside_the_penalty_area_team2
+        data_type: number
+        description: "Goals scored inside the penalty area by the second team."
+
+      - name: goal_outside_the_penalty_area_team1
+        data_type: number
+        description: "Goals scored outside the penalty area by the first team."
+
+      - name: goal_outside_the_penalty_area_team2
+        data_type: number
+        description: "Goals scored outside the penalty area by the second team."
+
+      - name: assists_team1
+        data_type: number
+        description: "Assists made by the first team."
+
+      - name: assists_team2
+        data_type: number
+        description: "Assists made by the second team."
+
+      - name: on_target_attempts_team1
+        data_type: number
+        description: "On-target attempts made by the first team."
+
+      - name: on_target_attempts_team2
+        data_type: number
+        description: "On-target attempts made by the second team."
+
+      - name: off_target_attempts_team1
+        data_type: number
+        description: "Off-target attempts made by the first team."
+
+      - name: off_target_attempts_team2
+        data_type: number
+        description: "Off-target attempts made by the second team."
+
+      - name: attempts_inside_the_penalty_area_team1
+        data_type: number
+        description: "Attempts inside the penalty area by the first team."
+
+      - name: attempts_inside_the_penalty_area__team2
+        data_type: number
+        description: "Attempts inside the penalty area by the second team."
+
+      - name: attempts_outside_the_penalty_area__team1
+        data_type: number
+        description: "Attempts outside the penalty area by the first team."
+
+      - name: attempts_outside_the_penalty_area__team2
+        data_type: number
+        description: "Attempts outside the penalty area by the second team."
+
+      - name: left_channel_team1
+        data_type: number
+        description: "Attempts made by the first team through the left channel."
+
+      - name: left_channel_team2
+        data_type: number
+        description: "Attempts made by the second team through the left channel."
+
+      - name: left_inside_channel_team1
+        data_type: number
+        description: "Attempts made by the first team through the left inside channel."
+
+      - name: left_inside_channel_team2
+        data_type: number
+        description: "Attempts made by the second team through the left inside channel."
+
+      - name: central_channel_team1
+        data_type: number
+        description: "Attempts made by the first team through the central channel."
+
+      - name: central_channel_team2
+        data_type: number
+        description: "Attempts made by the second team through the central channel."
+
+      - name: right_inside_channel_team1
+        data_type: number
+        description: "Attempts made by the first team through the right inside channel."
+
+      - name: right_inside_channel_team2
+        data_type: number
+        description: "Attempts made by the second team through the right inside channel."
+
+      - name: right_channel_team1
+        data_type: number
+        description: "Attempts made by the first team through the right channel."
+
+      - name: right_channel_team2
+        data_type: number
+        description: "Attempts made by the second team through the right channel."
+
+      - name: total_offers_to_receive_team1
+        data_type: number
+        description: "Total offers to receive made by the first team."
+
+      - name: total_offers_to_receive_team2
+        data_type: number
+        description: "Total offers to receive made by the second team."
+
+      - name: inbehind_offers_to_receive_team1
+        data_type: number
+        description: "In-behind offers to receive made by the first team."
+
+      - name: inbehind_offers_to_receive_team2
+        data_type: number
+        description: "In-behind offers to receive made by the second team."
+
+      - name: inbetween_offers_to_receive_team1
+        data_type: number
+        description: "In-between offers to receive made by the first team."
+
+      - name: inbetween_offers_to_receive_team2
+        data_type: number
+        description: "In-between offers to receive made by the second team."
+
+      - name: infront_offers_to_receive_team1
+        data_type: number
+        description: "In-front offers to receive made by the first team."
+
+      - name: infront_offers_to_receive_team2
+        data_type: number
+        description: "In-front offers to receive made by the second team."
+
+      - name: receptions_between_midfield_and_defensive_lines_team1
+        data_type: number
+        description: "Receptions between midfield and defensive lines by the first team."
+
+      - name: receptions_between_midfield_and_defensive_lines_team2
+        data_type: number
+        description: "Receptions between midfield and defensive lines by the second team."
+
+      - name: attempted_line_breaks_team1
+        data_type: number
+        description: "Attempted line breaks by the first team."
+
+      - name: attempted_line_breaks_team2
+        data_type: number
+        description: "Attempted line breaks by the second team."
+
+      - name: completed_line_breaksteam1
+        data_type: number
+        description: "Completed line breaks by the first team."
+
+      - name: completed_line_breaks_team2
+        data_type: number
+        description: "Completed line breaks by the second team."
+
+      - name: attempted_defensive_line_breaks_team1
+        data_type: number
+        description: "Attempted defensive line breaks by the first team."
+
+      - name: attempted_defensive_line_breaks_team2
+        data_type: number
+        description: "Attempted defensive line breaks by the second team."
+
+      - name: completed_defensive_line_breaksteam1
+        data_type: number
+        description: "Completed defensive line breaks by the first team."
+
+      - name: completed_defensive_line_breaks_team2
+        data_type: number
+        description: "Completed defensive line breaks by the second team."
+
+      - name: yellow_cards_team1
+        data_type: number
+        description: "Yellow cards received by the first team."
+
+      - name: yellow_cards_team2
+        data_type: number
+        description: "Yellow cards received by the second team."
+
+      - name: red_cards_team1
+        data_type: number
+        description: "Red cards received by the first team."
+
+      - name: red_cards_team2
+        data_type: number
+        description: "Red cards received by the second team."
+
+      - name: fouls_against_team1
+        data_type: number
+        description: "Fouls against the first team."
+
+      - name: fouls_against_team2
+        data_type: number
+        description: "Fouls against the second team."
+
+      - name: offsides_team1
+        data_type: number
+        description: "Offsides by the first team."
+
+      - name: offsides_team2
+        data_type: number
+        description: "Offsides by the second team."
+
+      - name: passes_team1
+        data_type: number
+        description: "Passes made by the first team."
+
+      - name: passes_team2
+        data_type: number
+        description: "Passes made by the second team."
+
+      - name: passes_completed_team1
+        data_type: number
+        description: "Completed passes by the first team."
+
+      - name: passes_completed_team2
+        data_type: number
+        description: "Completed passes by the second team."
+
+      - name: crosses_team1
+        data_type: number
+        description: "Crosses made by the first team."
+
+      - name: crosses_team2
+        data_type: number
+        description: "Crosses made by the second team."
+
+      - name: crosses_completed_team1
+        data_type: number
+        description: "Completed crosses by the first team."
+
+      - name: crosses_completed_team2
+        data_type: number
+        description: "Completed crosses by the second team."
+
+      - name: switches_of_play_completed_team1
+        data_type: number
+        description: "Completed switches of play by the first team."
+
+      - name: switches_of_play_completed_team2
+        data_type: number
+        description: "Completed switches of play by the second team."
+
+      - name: corners_team1
+        data_type: number
+        description: "Corners taken by the first team."
+
+      - name: corners_team2
+        data_type: number
+        description: "Corners taken by the second team."
+
+      - name: free_kicks_team1
+        data_type: number
+        description: "Free kicks taken by the first team."
+
+      - name: free_kicks_team2
+        data_type: number
+        description: "Free kicks taken by the second team."
+
+      - name: penalties_scored_team1
+        data_type: number
+        description: "Penalties scored by the first team."
+
+      - name: penalties_scored_team2
+        data_type: number
+        description: "Penalties scored by the second team."
+
+      - name: goal_preventions_team1
+        data_type: number
+        description: "Goal preventions by the first team."
+
+      - name: goal_preventions_team2
+        data_type: number
+        description: "Goal preventions by the second team."
+
+      - name: own_goals_team1
+        data_type: number
+        description: "Own goals by the first team."
+
+      - name: own_goals_team2
+        data_type: number
+        description: "Own goals by the second team."
+
+      - name: forced_turnovers_team1
+        data_type: number
+        description: "Forced turnovers by the first team."
+
+      - name: forced_turnovers_team2
+        data_type: number
+        description: "Forced turnovers by the second team."
+
+      - name: defensive_pressures_applied_team1
+        data_type: number
+        description: "Defensive pressures applied by the first team."
+
+      - name: defensive_pressures_applied_team2
+        data_type: number
+        description: "Defensive pressures applied by the second team."
