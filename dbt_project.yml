@@ -35,6 +35,9 @@ models:
         core:
           +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
           +materialized: view
+        stats:
+          +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
+          +materialized: view
 
 seeds:
   +schema: seed_data
