@@ -1,7 +1,7 @@
 with 
 
 source as (
-    select * from {{ ref('dim_games') }}
+    select * from {{ ref('stg_football__games') }}
 ),
 
 renamed as (
@@ -34,17 +34,17 @@ renamed as (
         scorer,
         minute 
     from source a 
-    inner join {{ ref('dim_tournament') }} b 
+    inner join {{ ref('stg_football__tournaments') }} b 
     on a.tournament=b.tournament
-    inner join  {{ ref('dim_country') }} c 
+    inner join  {{ ref('stg_football__country') }} c 
     on a.country=c.country
-    inner join  {{ ref('dim_city') }} d 
+    inner join  {{ ref('stg_football__city') }} d 
     on a.city=d.city
-    inner join {{ ref('dim_time') }} e
+    inner join {{ ref('stg_football__time') }} e
     on a.date=e.date
-    inner join {{ ref('dim_teams') }} f
+    inner join {{ ref('stg_football__teams') }} f
     on a.home_team=f.team
-    inner join {{ ref('dim_teams') }} g
+    inner join {{ ref('stg_football__teams') }} g
     on a.away_team=g.team
     
 )
