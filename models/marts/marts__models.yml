@@ -78,6 +78,9 @@ models:
       - name: game_id
         data_type: varchar
         description: "Unique identifier for the game."
+        constraints:
+          - name: pk_game_id
+            type: unique
 
       - name: date
         data_type: varchar
@@ -86,6 +89,10 @@ models:
       - name: date_id
         data_type: varchar
         description: "Identifier for the date."
+        constraints:
+          - name: fk_date_id
+            type: foreign_key
+            ref: dim_time.date_id
 
       - name: home_team
         data_type: varchar
@@ -94,6 +101,10 @@ models:
       - name: team_id_home
         data_type: varchar
         description: "Identifier for the home team."
+        constraints:
+          - name: fk_team_id_home
+            type: foreign_key
+            ref: dim_teams.team_id
 
       - name: away_team
         data_type: varchar
@@ -102,6 +113,10 @@ models:
       - name: team_id_away
         data_type: varchar
         description: "Identifier for the away team."
+        constraints:
+          - name: fk_team_id_away
+            type: foreign_key
+            ref: dim_teams.team_id
 
       - name: home_score
         data_type: number
@@ -130,6 +145,10 @@ models:
       - name: tournament_id
         data_type: varchar
         description: "Identifier for the tournament."
+        constraints:
+          - name: fk_tournament_id
+            type: foreign_key
+            ref: dim_tournament.tournament_id
 
       - name: country
         data_type: varchar
@@ -138,6 +157,10 @@ models:
       - name: country_id
         data_type: varchar
         description: "Identifier for the country."
+        constraints:
+          - name: fk_country_id
+            type: foreign_key
+            ref: dim_country.country_id
 
       - name: city
         data_type: varchar
@@ -146,6 +169,10 @@ models:
       - name: city_id
         data_type: varchar
         description: "Identifier for the city."
+        constraints:
+          - name: fk_city_id
+            type: foreign_key
+            ref: dim_city.city_id
 
       - name: place
         data_type: varchar
@@ -166,3 +193,6 @@ models:
       - name: minute
         data_type: number
         description: "Minute in which the goal was scored."
+
+
+

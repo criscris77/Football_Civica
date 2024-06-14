@@ -10,6 +10,7 @@ renamed as (
 
     select
         *
+        
 
     from source
 

@@ -16,7 +16,9 @@ renamed as (
         away_team,
         team,
         scorer,
-        CAST(minute as Number) as minute
+        CAST(minute as Number) as minute,
+        own_goal,
+        penalty
     from source
 
 )
