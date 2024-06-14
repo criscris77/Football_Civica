@@ -2,453 +2,674 @@ version: 2
 
 models:
   - name: base__goalscorers
-    description: ""
+    description: "Contains data on goalscorers for each game."
     columns:
+      - name: game_id
+        data_type: varchar
+        description: "Unique identifier for the game."
+        tests:
+          - not_null
+
+      - name: score_id
+        data_type: varchar
+        description: "Unique identifier for the score."
+        tests:
+          - not_null
+
       - name: date
         data_type: date
-        description: ""
+        description: "Date of the game."
+        tests:
+          - not_null
 
       - name: home_team
         data_type: varchar
-        description: ""
+        description: "Name of the home team."
+        tests:
+          - not_null
 
       - name: away_team
         data_type: varchar
-        description: ""
+        description: "Name of the away team."
+        tests:
+          - not_null
 
       - name: team
         data_type: varchar
-        description: ""
+        description: "Name of the team that scored."
+        tests:
+          - not_null
 
       - name: scorer
         data_type: varchar
-        description: ""
+        description: "Name of the player who scored."
+        tests:
+          - not_null
 
       - name: minute
-        data_type: varchar
-        description: ""
-
-      - name: own_goal
-        data_type: boolean
-        description: ""
-
-      - name: penalty
-        data_type: boolean
-        description: ""
+        data_type: number
+        description: "Minute in which the goal was scored."
+        tests:
+          - not_null
 
   - name: base__results
-    description: ""
+    description: "Contains the results of each game."
     columns:
+      - name: game_id
+        data_type: varchar
+        description: "Unique identifier for the game."
+        tests:
+          - not_null
+
       - name: date
-        data_type: date
-        description: ""
+        data_type: varchar
+        description: "Date of the game."
+        tests:
+          - not_null
 
       - name: home_team
         data_type: varchar
-        description: ""
+        description: "Name of the home team."
+        tests:
+          - not_null
 
       - name: away_team
         data_type: varchar
-        description: ""
+        description: "Name of the away team."
+        tests:
+          - not_null
 
       - name: home_score
-        data_type: varchar
-        description: ""
+        data_type: number
+        description: "Score of the home team."
+        tests:
+          - not_null
 
       - name: away_score
-        data_type: varchar
-        description: ""
+        data_type: number
+        description: "Score of the away team."
+        tests:
+          - not_null
 
       - name: tournament
         data_type: varchar
-        description: ""
+        description: "Name of the tournament."
+        tests:
+          - not_null
 
       - name: city
         data_type: varchar
-        description: ""
+        description: "City where the game was played."
+        tests:
+          - not_null
 
       - name: country
         data_type: varchar
-        description: ""
-
-      - name: neutral
-        data_type: boolean
-        description: ""
+        description: "Country where the game was played."
+        tests:
+          - not_null
 
   - name: base__shootouts
-    description: ""
+    description: "Contains data on shootouts."
     columns:
       - name: date
         data_type: date
-        description: ""
+        description: "Date of the shootout."
+        tests:
+          - not_null
 
       - name: home_team
         data_type: varchar
-        description: ""
+        description: "Name of the home team."
+        tests:
+          - not_null
 
       - name: away_team
         data_type: varchar
-        description: ""
+        description: "Name of the away team."
+        tests:
+          - not_null
 
       - name: winner
         data_type: varchar
-        description: ""
+        description: "Name of the team that won the shootout."
+        tests:
+          - not_null
 
       - name: first_shooter
         data_type: varchar
-        description: ""
+        description: "Name of the first shooter in the shootout."
+        tests:
+          - not_null
 
   - name: base__stadistics_2022
-    description: ""
+    description: "Contains statistics for games played in 2022."
     columns:
       - name: team1
         data_type: varchar
-        description: ""
+        description: "Name of the first team."
+        tests:
+          - not_null
 
       - name: team2
         data_type: varchar
-        description: ""
+        description: "Name of the second team."
+        tests:
+          - not_null
 
       - name: possession_team1
         data_type: varchar
-        description: ""
+        description: "Possession percentage of the first team."
+        tests:
+          - not_null
 
       - name: possession_team2
         data_type: varchar
-        description: ""
+        description: "Possession percentage of the second team."
+        tests:
+          - not_null
 
       - name: possession_in_contest
         data_type: varchar
-        description: ""
+        description: "Percentage of possession in contest."
+        tests:
+          - not_null
 
       - name: number_of_goals_team1
         data_type: number
-        description: ""
+        description: "Number of goals scored by the first team."
+        tests:
+          - not_null
 
       - name: number_of_goals_team2
         data_type: number
-        description: ""
+        description: "Number of goals scored by the second team."
+        tests:
+          - not_null
 
       - name: date
         data_type: varchar
-        description: ""
+        description: "Date of the game."
+        tests:
+          - not_null
 
       - name: hour
         data_type: varchar
-        description: ""
+        description: "Hour of the game."
+        tests:
+          - not_null
 
       - name: category
         data_type: varchar
-        description: ""
+        description: "Category of the game."
+        tests:
+          - not_null
 
       - name: total_attempts_team1
         data_type: number
-        description: ""
+        description: "Total attempts made by the first team."
+        tests:
+          - not_null
 
       - name: total_attempts_team2
         data_type: number
-        description: ""
+        description: "Total attempts made by the second team."
+        tests:
+          - not_null
 
       - name: conceded_team1
         data_type: number
-        description: ""
+        description: "Total goals conceded by the first team."
+        tests:
+          - not_null
 
       - name: conceded_team2
         data_type: number
-        description: ""
+        description: "Total goals conceded by the second team."
+        tests:
+          - not_null
 
       - name: goal_inside_the_penalty_area_team1
         data_type: number
-        description: ""
+        description: "Goals scored inside the penalty area by the first team."
+        tests:
+          - not_null
 
       - name: goal_inside_the_penalty_area_team2
         data_type: number
-        description: ""
+        description: "Goals scored inside the penalty area by the second team."
+        tests:
+          - not_null
 
       - name: goal_outside_the_penalty_area_team1
         data_type: number
-        description: ""
+        description: "Goals scored outside the penalty area by the first team."
+        tests:
+          - not_null
 
       - name: goal_outside_the_penalty_area_team2
         data_type: number
-        description: ""
+        description: "Goals scored outside the penalty area by the second team."
+        tests:
+          - not_null
 
       - name: assists_team1
         data_type: number
-        description: ""
+        description: "Assists made by the first team."
+        tests:
+          - not_null
 
       - name: assists_team2
         data_type: number
-        description: ""
+        description: "Assists made by the second team."
+        tests:
+          - not_null
 
       - name: on_target_attempts_team1
         data_type: number
-        description: ""
+        description: "On-target attempts made by the first team."
+        tests:
+          - not_null
 
       - name: on_target_attempts_team2
         data_type: number
-        description: ""
+        description: "On-target attempts made by the second team."
+        tests:
+          - not_null
 
       - name: off_target_attempts_team1
         data_type: number
-        description: ""
+        description: "Off-target attempts made by the first team."
+        tests:
+          - not_null
 
       - name: off_target_attempts_team2
         data_type: number
-        description: ""
+        description: "Off-target attempts made by the second team."
+        tests:
+          - not_null
 
       - name: attempts_inside_the_penalty_area_team1
         data_type: number
-        description: ""
+        description: "Attempts inside the penalty area by the first team."
+        tests:
+          - not_null
 
       - name: attempts_inside_the_penalty_area__team2
         data_type: number
-        description: ""
+        description: "Attempts inside the penalty area by the second team."
+        tests:
+          - not_null
 
       - name: attempts_outside_the_penalty_area__team1
         data_type: number
-        description: ""
+        description: "Attempts outside the penalty area by the first team."
+        tests:
+          - not_null
 
       - name: attempts_outside_the_penalty_area__team2
         data_type: number
-        description: ""
+        description: "Attempts outside the penalty area by the second team."
+        tests:
+          - not_null
 
       - name: left_channel_team1
         data_type: number
-        description: ""
+        description: "Attempts made by the first team through the left channel."
+        tests:
+          - not_null
 
       - name: left_channel_team2
         data_type: number
-        description: ""
+        description: "Attempts made by the second team through the left channel."
+        tests:
+          - not_null
 
       - name: left_inside_channel_team1
         data_type: number
-        description: ""
+        description: "Attempts made by the first team through the left inside channel."
+        tests:
+          - not_null
 
       - name: left_inside_channel_team2
         data_type: number
-        description: ""
+        description: "Attempts made by the second team through the left inside channel."
+        tests:
+          - not_null
 
       - name: central_channel_team1
         data_type: number
-        description: ""
+        description: "Attempts made by the first team through the central channel."
+        tests:
+          - not_null
 
       - name: central_channel_team2
         data_type: number
-        description: ""
+        description: "Attempts made by the second team through the central channel."
+        tests:
+          - not_null
 
       - name: right_inside_channel_team1
         data_type: number
-        description: ""
+        description: "Attempts made by the first team through the right inside channel."
+        tests:
+          - not_null
 
       - name: right_inside_channel_team2
         data_type: number
-        description: ""
+        description: "Attempts made by the second team through the right inside channel."
+        tests:
+          - not_null
 
       - name: right_channel_team1
         data_type: number
-        description: ""
+        description: "Attempts made by the first team through the right channel."
+        tests:
+          - not_null
 
       - name: right_channel_team2
         data_type: number
-        description: ""
+        description: "Attempts made by the second team through the right channel."
+        tests:
+          - not_null
 
       - name: total_offers_to_receive_team1
         data_type: number
-        description: ""
+        description: "Total offers to receive made by the first team."
+        tests:
+          - not_null
 
       - name: total_offers_to_receive_team2
         data_type: number
-        description: ""
+        description: "Total offers to receive made by the second team."
+        tests:
+          - not_null
 
       - name: inbehind_offers_to_receive_team1
         data_type: number
-        description: ""
+        description: "In-behind offers to receive made by the first team."
+        tests:
+          - not_null
 
       - name: inbehind_offers_to_receive_team2
         data_type: number
-        description: ""
+        description: "In-behind offers to receive made by the second team."
+        tests:
+          - not_null
 
       - name: inbetween_offers_to_receive_team1
         data_type: number
-        description: ""
+        description: "In-between offers to receive made by the first team."
+        tests:
+          - not_null
 
       - name: inbetween_offers_to_receive_team2
         data_type: number
-        description: ""
+        description: "In-between offers to receive made by the second team."
+        tests:
+          - not_null
 
       - name: infront_offers_to_receive_team1
         data_type: number
-        description: ""
+        description: "In-front offers to receive made by the first team."
+        tests:
+          - not_null
 
       - name: infront_offers_to_receive_team2
         data_type: number
-        description: ""
+        description: "In-front offers to receive made by the second team."
+        tests:
+          - not_null
 
       - name: receptions_between_midfield_and_defensive_lines_team1
         data_type: number
-        description: ""
+        description: "Receptions between midfield and defensive lines by the first team."
+        tests:
+          - not_null
 
       - name: receptions_between_midfield_and_defensive_lines_team2
         data_type: number
-        description: ""
+        description: "Receptions between midfield and defensive lines by the second team."
+        tests:
+          - not_null
 
       - name: attempted_line_breaks_team1
         data_type: number
-        description: ""
+        description: "Attempted line breaks by the first team."
+        tests:
+          - not_null
 
       - name: attempted_line_breaks_team2
         data_type: number
-        description: ""
+        description: "Attempted line breaks by the second team."
+        tests:
+          - not_null
 
       - name: completed_line_breaksteam1
         data_type: number
-        description: ""
+        description: "Completed line breaks by the first team."
+        tests:
+          - not_null
 
       - name: completed_line_breaks_team2
         data_type: number
-        description: ""
+        description: "Completed line breaks by the second team."
+        tests:
+          - not_null
 
       - name: attempted_defensive_line_breaks_team1
         data_type: number
-        description: ""
+        description: "Attempted defensive line breaks by the first team."
+        tests:
+          - not_null
 
       - name: attempted_defensive_line_breaks_team2
         data_type: number
-        description: ""
+        description: "Attempted defensive line breaks by the second team."
+        tests:
+          - not_null
 
       - name: completed_defensive_line_breaksteam1
         data_type: number
-        description: ""
+        description: "Completed defensive line breaks by the first team."
+        tests:
+          - not_null
 
       - name: completed_defensive_line_breaks_team2
         data_type: number
-        description: ""
+        description: "Completed defensive line breaks by the second team."
+        tests:
+          - not_null
 
       - name: yellow_cards_team1
         data_type: number
-        description: ""
+        description: "Yellow cards received by the first team."
+        tests:
+          - not_null
 
       - name: yellow_cards_team2
         data_type: number
-        description: ""
+        description: "Yellow cards received by the second team."
+        tests:
+          - not_null
 
       - name: red_cards_team1
         data_type: number
-        description: ""
+        description: "Red cards received by the first team."
+        tests:
+          - not_null
 
       - name: red_cards_team2
         data_type: number
-        description: ""
+        description: "Red cards received by the second team."
+        tests:
+          - not_null
 
       - name: fouls_against_team1
         data_type: number
-        description: ""
+        description: "Fouls against the first team."
+        tests:
+          - not_null
 
       - name: fouls_against_team2
         data_type: number
-        description: ""
+        description: "Fouls against the second team."
+        tests:
+          - not_null
 
       - name: offsides_team1
         data_type: number
-        description: ""
+        description: "Offsides by the first team."
+        tests:
+          - not_null
 
       - name: offsides_team2
         data_type: number
-        description: ""
+        description: "Offsides by the second team."
+        tests:
+          - not_null
 
       - name: passes_team1
         data_type: number
-        description: ""
+        description: "Passes made by the first team."
+        tests:
+          - not_null
 
       - name: passes_team2
         data_type: number
-        description: ""
+        description: "Passes made by the second team."
+        tests:
+          - not_null
 
       - name: passes_completed_team1
         data_type: number
-        description: ""
+        description: "Completed passes by the first team."
+        tests:
+          - not_null
 
       - name: passes_completed_team2
         data_type: number
-        description: ""
+        description: "Completed passes by the second team."
+        tests:
+          - not_null
 
       - name: crosses_team1
         data_type: number
-        description: ""
+        description: "Crosses made by the first team."
+        tests:
+          - not_null
 
       - name: crosses_team2
         data_type: number
-        description: ""
+        description: "Crosses made by the second team."
+        tests:
+          - not_null
 
       - name: crosses_completed_team1
         data_type: number
-        description: ""
+        description: "Completed crosses by the first team."
+        tests:
+          - not_null
 
       - name: crosses_completed_team2
         data_type: number
-        description: ""
+        description: "Completed crosses by the second team."
+        tests:
+          - not_null
 
       - name: switches_of_play_completed_team1
         data_type: number
-        description: ""
+        description: "Completed switches of play by the first team."
+        tests:
+          - not_null
 
       - name: switches_of_play_completed_team2
         data_type: number
-        description: ""
+        description: "Completed switches of play by the second team."
+        tests:
+          - not_null
 
       - name: corners_team1
         data_type: number
-        description: ""
+        description: "Corners taken by the first team."
+        tests:
+          - not_null
 
       - name: corners_team2
         data_type: number
-        description: ""
+        description: "Corners taken by the second team."
+        tests:
+          - not_null
 
       - name: free_kicks_team1
         data_type: number
-        description: ""
+        description: "Free kicks taken by the first team."
+        tests:
+          - not_null
 
       - name: free_kicks_team2
         data_type: number
-        description: ""
+        description: "Free kicks taken by the second team."
+        tests:
+          - not_null
 
       - name: penalties_scored_team1
         data_type: number
-        description: ""
+        description: "Penalties scored by the first team."
+        tests:
+          - not_null
 
       - name: penalties_scored_team2
         data_type: number
-        description: ""
+        description: "Penalties scored by the second team."
+        tests:
+          - not_null
 
       - name: goal_preventions_team1
         data_type: number
-        description: ""
+        description: "Goal preventions by the first team."
+        tests:
+          - not_null
 
       - name: goal_preventions_team2
         data_type: number
-        description: ""
+        description: "Goal preventions by the second team."
+        tests:
+          - not_null
 
       - name: own_goals_team1
         data_type: number
-        description: ""
+        description: "Own goals by the first team."
+        tests:
+          - not_null
 
       - name: own_goals_team2
         data_type: number
-        description: ""
+        description: "Own goals by the second team."
+        tests:
+          - not_null
 
       - name: forced_turnovers_team1
         data_type: number
-        description: ""
+        description: "Forced turnovers by the first team."
+        tests:
+          - not_null
 
       - name: forced_turnovers_team2
         data_type: number
-        description: ""
+        description: "Forced turnovers by the second team."
+        tests:
+          - not_null
 
       - name: defensive_pressures_applied_team1
         data_type: number
-        description: ""
+        description: "Defensive pressures applied by the first team."
+        tests:
+          - not_null
 
       - name: defensive_pressures_applied_team2
         data_type: number
-        description: ""
+        description: "Defensive pressures applied by the second team."
+        tests:
+          - not_null
+

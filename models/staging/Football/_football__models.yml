@@ -1,0 +1,163 @@
+version: 2
+
+models:
+  - name: stg_football__city
+    description: ""
+    columns:
+      - name: city_id
+        data_type: varchar
+        description: ""
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+  - name: stg_football__country
+    description: ""
+    columns:
+      - name: country_id
+        data_type: varchar
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+  - name: stg_football__goalscorers
+    description: ""
+    columns:
+      - name: game_id
+        data_type: varchar
+        description: ""
+
+      - name: score_id
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: home_team
+        data_type: varchar
+        description: ""
+
+      - name: away_team
+        data_type: varchar
+        description: ""
+
+      - name: team
+        data_type: varchar
+        description: ""
+
+      - name: scorer
+        data_type: varchar
+        description: ""
+
+      - name: minute
+        data_type: varchar
+        description: ""
+
+  - name: stg_football__results
+    description: ""
+    columns:
+      - name: game_id
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: varchar
+        description: ""
+
+      - name: home_team
+        data_type: varchar
+        description: ""
+
+      - name: away_team
+        data_type: varchar
+        description: ""
+
+      - name: home_score
+        data_type: varchar
+        description: ""
+
+      - name: away_score
+        data_type: varchar
+        description: ""
+
+      - name: tournament
+        data_type: varchar
+        description: ""
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: score_id
+        data_type: varchar
+        description: ""
+
+      - name: team_score
+        data_type: varchar
+        description: ""
+
+      - name: scorer
+        data_type: varchar
+        description: ""
+
+      - name: minute
+        data_type: number
+        description: ""
+
+  - name: stg_football__teams
+    description: ""
+    columns:
+      - name: team_id
+        data_type: varchar
+        description: ""
+
+      - name: team
+        data_type: varchar
+        description: ""
+
+  - name: stg_football__time
+    description: ""
+    columns:
+      - name: date_timezone
+        data_type: timestamp_tz
+        description: ""
+
+      - name: date
+        data_type: varchar
+        description: ""
+
+      - name: date_id
+        data_type: varchar
+        description: ""
+
+      - name: year
+        data_type: number
+        description: ""
+
+      - name: month
+        data_type: number
+        description: ""
+
+      - name: day
+        data_type: number
+        description: ""
+
+  - name: stg_football__tournaments
+    description: ""
+    columns:
+      - name: tournament_id
+        data_type: varchar
+        description: ""
+
+      - name: tournament
+        data_type: varchar
+        description: ""

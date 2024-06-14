@@ -13,7 +13,10 @@ renamed as (
         home_team,
         away_team,
         winner,
-        first_shooter
+        case
+            when first_shooter is null then 'unknown'
+            else first_shooter
+        end as first_shooter
 
     from source
 
