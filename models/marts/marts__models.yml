@@ -138,10 +138,6 @@ models:
           - name: pk_game_id
             type: unique
 
-      - name: date
-        data_type: varchar
-        description: "Date of the game."
-
       - name: date_id
         data_type: varchar
         description: "Identifier for the date."
@@ -150,10 +146,6 @@ models:
             type: foreign_key
             ref: dim_time.date_id
 
-      - name: home_team
-        data_type: varchar
-        description: "Name of the home team."
-
       - name: team_id_home
         data_type: varchar
         description: "Identifier for the home team."
@@ -161,10 +153,6 @@ models:
           - name: fk_team_id_home
             type: foreign_key
             ref: dim_teams.team_id
-
-      - name: away_team
-        data_type: varchar
-        description: "Name of the away team."
 
       - name: team_id_away
         data_type: varchar
@@ -190,13 +178,7 @@ models:
         data_type: varchar
         description: "Result of the match."
 
-      - name: winner
-        data_type: varchar
-        description: "Name of the winning team, if applicable."
 
-      - name: tournament
-        data_type: varchar
-        description: "Name of the tournament."
 
       - name: tournament_id
         data_type: varchar
@@ -206,10 +188,6 @@ models:
             type: foreign_key
             ref: dim_tournament.tournament_id
 
-      - name: country
-        data_type: varchar
-        description: "Country where the game was played."
-
       - name: country_id
         data_type: varchar
         description: "Identifier for the country."
@@ -217,10 +195,6 @@ models:
           - name: fk_country_id
             type: foreign_key
             ref: dim_country.country_id
-
-      - name: city
-        data_type: varchar
-        description: "City where the game was played."
 
       - name: city_id
         data_type: varchar
@@ -230,25 +204,10 @@ models:
             type: foreign_key
             ref: dim_city.city_id
 
-      - name: place
-        data_type: varchar
-        description: "Specific place within the city where the game was played."
-
       - name: score_id
         data_type: varchar
         description: "Identifier for the score."
 
-      - name: team_score
-        data_type: varchar
-        description: "Name of the team that scored."
-
-      - name: scorer
-        data_type: varchar
-        description: "Name of the player who scored."
-
-      - name: minute
-        data_type: number
-        description: "Minute in which the goal was scored."
 
 
 
