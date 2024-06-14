@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ ref('fct_games') }}
+    select * from {{ ref('intermediate_football_games') }}
 ),
 
 renamed as (
