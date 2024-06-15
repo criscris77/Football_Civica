@@ -18,7 +18,8 @@ renamed as (
         scorer,
         CAST(minute as Number) as minute,
         own_goal,
-        penalty
+        penalty,
+        _fivetran_synced
     from source
 
 )

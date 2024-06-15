@@ -17,7 +17,9 @@ renamed as (
         CAST(away_score AS NUMBER) AS away_score,
         tournament,
         city,
-        country
+        country,
+        _fivetran_synced
+
     from source
     where tournament in ('Copa América','UEFA Euro','FIFA World Cup')
 )
