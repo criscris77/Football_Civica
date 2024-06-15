@@ -549,3 +549,14 @@ models:
       - name: defensive_pressures_applied_team2
         data_type: number
         description: "Defensive pressures applied by the second team."
+  - name: stg_football__category
+    description: "Table for football categories."
+    columns:
+    - name: category_id
+      data_type: varchar
+      description: "Unique identifier for the category."
+      
+    - name: category
+      data_type: varchar
+      description: "Name of the football category."
+

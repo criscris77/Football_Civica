@@ -207,6 +207,16 @@ models:
       - name: score_id
         data_type: varchar
         description: "Identifier for the score."
+  - name: dim__category
+    description: "Table for football categories."
+    columns:
+    - name: category_id
+      data_type: varchar
+      description: "Unique identifier for the category."
+      
+    - name: category
+      data_type: varchar
+      description: "Name of the football category."
 
 
 
