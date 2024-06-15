@@ -3,8 +3,8 @@ WITH source AS (
 ),
 renamed AS (
     SELECT
-        a.*,
         b.game_id,
+        a.*,
         b.tournament,
         b.city,
         b.country,
