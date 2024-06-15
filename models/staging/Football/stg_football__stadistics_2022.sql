@@ -10,7 +10,7 @@ renamed AS (
         b.country,
         ROW_NUMBER() OVER (PARTITION BY a.team1, a.team2 ORDER BY b.date) AS rn
     FROM source a 
-    INNER JOIN {{ ref('stg_football__results') }} b 
+    INNER JOIN {{ ref('base__results') }} b 
         ON a.date=b.date 
 )
 

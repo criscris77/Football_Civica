@@ -12,23 +12,15 @@ sources:
           - name: date
             data_type: date
             description: "Date of the match in YYYY-MM-DD format."
-            tests:
-              - not_null
           - name: home_team
             data_type: varchar
             description: "Name of the home team."
-            tests:
-              - not_null
           - name: away_team
             data_type: varchar
             description: "Name of the away team."
-            tests:
-              - not_null
           - name: team
             data_type: varchar
             description: "Name of the team to which the scorer belongs."
-            tests:
-              - not_null
           - name: scorer
             data_type: varchar
             description: "Name of the player who scored the goal."
@@ -47,18 +39,12 @@ sources:
           - name: date
             data_type: date
             description: "Date of the match in YYYY-MM-DD format."
-            tests:
-              - not_null
           - name: home_team
             data_type: varchar
             description: "Name of the home team."
-            tests:
-              - not_null
           - name: away_team
             data_type: varchar
             description: "Name of the away team."
-            tests:
-              - not_null
           - name: home_score
             data_type: varchar
             description: "Score of the home team."
@@ -84,13 +70,9 @@ sources:
           - name: team1
             data_type: varchar
             description: "Name of the first team."
-            tests:
-              - not_null
           - name: team2
             data_type: varchar
             description: "Name of the second team."
-            tests:
-              - not_null
           - name: possession_team1
             data_type: varchar
             description: "Possession percentage of the first team."
@@ -109,8 +91,6 @@ sources:
           - name: date
             data_type: varchar
             description: "Date of the match in YYYY-MM-DD format."
-            tests:
-              - not_null
           - name: hour
             data_type: varchar
             description: "Time of the match."

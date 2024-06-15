@@ -7,7 +7,8 @@ models:
       - name: city_id
         data_type: varchar
         description: "Unique identifier for the city."
-
+        tests:
+          - not_null
       - name: city
         data_type: varchar
         description: "Name of the city."
@@ -18,7 +19,8 @@ models:
       - name: country_id
         data_type: varchar
         description: "Unique identifier for the country."
-
+        tests:
+          - not_null
       - name: country
         data_type: varchar
         description: "Name of the country."
@@ -29,11 +31,13 @@ models:
       - name: game_id
         data_type: varchar
         description: "Unique identifier for the game."
-
+        tests:
+          - not_null
       - name: score_id
         data_type: varchar
         description: "Unique identifier for the score."
-
+        tests:
+          - not_null
       - name: date
         data_type: date
         description: "Date of the game."
@@ -64,7 +68,8 @@ models:
       - name: game_id
         data_type: varchar
         description: "Unique identifier for the game."
-
+        tests:
+          - not_null
       - name: date
         data_type: varchar
         description: "Date of the game."
@@ -100,7 +105,8 @@ models:
       - name: score_id
         data_type: varchar
         description: "Unique identifier for the score."
-
+        tests:
+          - not_null
       - name: team_score
         data_type: varchar
         description: "Name of the team that scored."
@@ -119,7 +125,8 @@ models:
       - name: team_id
         data_type: varchar
         description: "Unique identifier for the team."
-
+        tests:
+          - not_null
       - name: team
         data_type: varchar
         description: "Name of the team."
@@ -138,7 +145,8 @@ models:
       - name: date_id
         data_type: varchar
         description: "Unique identifier for the date."
-
+        tests:
+          - not_null
       - name: year
         data_type: number
         description: "Year of the game."
@@ -157,7 +165,8 @@ models:
       - name: tournament_id
         data_type: varchar
         description: "Unique identifier for the tournament."
-
+        tests:
+          - not_null
       - name: tournament
         data_type: varchar
         description: "Name of the tournament."
