@@ -47,7 +47,7 @@ models:
         description: "Unique identifier for the game."
         tests:
           - not_null
-
+          - unique
       - name: date
         data_type: varchar
         description: "Date of the game."
