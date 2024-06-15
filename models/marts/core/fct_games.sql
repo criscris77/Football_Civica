@@ -1,52 +1,36 @@
-with 
-
-source as (
-    select * from {{ ref('intermediate_football_games') }}
+WITH source AS (
+    SELECT * FROM {{ ref('intermediate_football_games') }}
 ),
-
-renamed as (
-    select
-        game_id,
-        a.date,
+renamed AS (
+    SELECT
+        a.game_id,
         e.date_id,
-        a.home_team,
         f.team_id as team_id_home,
-        a.away_team,
         g.team_id as team_id_away,
-        a.home_score,
-        a.away_score,
+        b.tournament_id,
+        c.country_id,
+        d.city_id,
+        score_id,
         CONCAT(home_team, ' vs ', away_team) as match,
         CONCAT(home_score, '-', away_score) as result,
-        case
-            when home_score > away_score then home_team
-            when away_score > home_score then away_team
-            else 'draw'
-        end as winner,
-        a.tournament,
-        b.tournament_id,
-        a.country,
-        c.country_id,
-        a.city,
-        d.city_id,
         CONCAT(a.city, ' (', a.country, ')') as place,
-        score_id,
-        team_score,
-        scorer,
-        minute 
-    from source a 
-    inner join {{ ref('dim_tournament') }} b 
-    on a.tournament=b.tournament
-    inner join  {{ ref('dim_country') }} c 
-    on a.country=c.country
-    inner join  {{ ref('dim_city') }} d 
-    on a.city=d.city
-    inner join {{ ref('dim_time') }} e
-    on a.date=e.date
-    inner join {{ ref('dim_teams') }} f
-    on a.home_team=f.team
-    inner join {{ ref('dim_teams') }} g
-    on a.away_team=g.team
-    
+        a.date,
+        CONCAT(scorer,' min ',minute,' (',team_score,')') as goal,
+        CASE
+            WHEN home_score > away_score THEN home_team
+            WHEN away_score > home_score THEN away_team
+            ELSE 'draw'
+        END as winner,
+        SUM(home_score + away_score) AS total_goals
+    FROM source a 
+    INNER JOIN {{ ref('dim_tournament') }} b ON a.tournament_id = b.tournament_id
+    INNER JOIN {{ ref('dim_country') }} c ON a.country_id = c.country_id
+    INNER JOIN {{ ref('dim_city') }} d ON a.city_id = d.city_id
+    INNER JOIN {{ ref('dim_time') }} e ON a.date_id = e.date_id
+    INNER JOIN {{ ref('dim_teams') }} f ON a.home_team = f.team
+    INNER JOIN {{ ref('dim_teams') }} g ON a.away_team = g.team
+    GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14
+    order by a.date DESC
 )
-
-select * from renamed
+SELECT * FROM renamed

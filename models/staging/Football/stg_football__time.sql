@@ -8,7 +8,8 @@ with date_spine as (
 
 select
     CONVERT_TIMEZONE('UTC',TO_TIMESTAMP_TZ(date_day) )as date_timezone,
-    TO_CHAR(date_timezone, 'DD/MM/YYYY') as date,
+    TO_DATE(date_timezone) as date,
+    TO_CHAR(date_timezone, 'DD/MM/YYYY') as fecha,
     {{ dbt_utils.generate_surrogate_key(['date']) }} as date_id,
     extract(year from date_day) as year,
     extract(month from date_day) as month,
