@@ -1,3 +1,8 @@
+{{
+  config(
+    materialized='incremental'
+  )
+}}
 with 
 
 source as (
@@ -32,7 +37,8 @@ renamed as (
         score_id,
         team_score,
         scorer,
-        minute 
+        minute ,
+        a._fivetran_synced
     from source a 
     inner join {{ ref('stg_football__tournaments') }} b 
     on a.tournament=b.tournament
@@ -50,3 +56,8 @@ renamed as (
 )
 
 select * from renamed
+{% if is_incremental() %}
+
+  where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}

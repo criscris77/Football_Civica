@@ -1,3 +1,8 @@
+{{
+  config(
+    materialized='incremental'
+  )
+}}
 WITH source AS (
     SELECT * FROM {{ ref('intermediate_football_games') }}
 ),
@@ -21,6 +26,7 @@ renamed AS (
         CONCAT(home_score, '-', away_score) as result,
         CONCAT(a.city, ' (', a.country, ')') as place,
         a.date,
+        a._fivetran_synced,
         CONCAT(scorer,' min ',minute,' (',team_score,')') as goal,
         CASE
             WHEN home_score > away_score THEN home_team
@@ -36,7 +42,12 @@ renamed AS (
     INNER JOIN {{ ref('dim_teams') }} f ON a.home_team = f.team
     INNER JOIN {{ ref('dim_teams') }} g ON a.away_team = g.team
     GROUP BY
-        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21
     order by a.date DESC
 )
 SELECT * FROM renamed
+{% if is_incremental() %}
+
+  where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}

@@ -1,3 +1,8 @@
+{{
+  config(
+    materialized='incremental'
+  )
+}}
 with 
 
 source as (
@@ -17,11 +22,13 @@ renamed as (
         team,
         scorer,
         CAST(minute as Number) as minute,
-        own_goal,
-        penalty,
         _fivetran_synced
     from source
-
 )
 
 select * from renamed
+{% if is_incremental() %}
+
+  where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
