@@ -1,7 +1,7 @@
 with 
 
 source as (
-    select * from {{ ref('stg_football__games') }}
+    select * from {{ ref('stg_football__games_goals') }}
 ),
 
 renamed as (

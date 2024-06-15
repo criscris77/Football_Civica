@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ ref('intermediate_football_games') }}
+    select * from {{ ref('fct_games_goals') }}
 ),
 
 renamed as (
@@ -13,9 +13,10 @@ renamed as (
         result,
         TOURNAMENT,
         place,
-        SCORER,
-        minute
+        goal
     FROM source
+    group by 1,2,3,4,5,6
+    order by date DESC
 
 )
 

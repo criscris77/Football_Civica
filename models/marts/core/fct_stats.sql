@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select *  from {{ ref('stg_football__stadistics_2022') }}
+    select *  from {{ ref('stg_football__stats') }}
 
 ),
 

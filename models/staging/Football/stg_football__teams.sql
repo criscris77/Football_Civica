@@ -2,10 +2,10 @@ with
 
 source as (
 
-    select home_team as team from {{ ref('base__results') }}
+    select home_team as team from {{ ref('base__games') }}
     where tournament in ('Copa América','UEFA Euro','FIFA World Cup')
     union
-    select away_team as team from {{ ref('base__results') }}
+    select away_team as team from {{ ref('base__games') }}
     where tournament in ('Copa América','UEFA Euro','FIFA World Cup')
 )
 

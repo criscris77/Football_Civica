@@ -1,33 +1,31 @@
 WITH source AS (
     SELECT * 
-    FROM {{ ref('fct_stats_FIFAWorldCup_QATAR_2022') }}
+    FROM {{ ref('fct_stats') }}
 ),
 
 renamed AS (
     SELECT 
         team1 AS team, 
-        SUM(YELLOW_CARDS_TEAM1) AS yellows
+        CORNERS_TEAM1 AS corners
     FROM source
-    GROUP BY team1
 
     UNION ALL
 
     SELECT 
         team2 AS team, 
-        SUM(YELLOW_CARDS_TEAM2) AS yellows
+        CORNERS_TEAM2 AS corners
     FROM source
-    GROUP BY team2
 ),
 
-summed AS (
+averaged AS (
     SELECT 
         team, 
-        SUM(yellows) AS total_yellows
+        ROUND(AVG(corners),2) AS avg_corners
     FROM renamed
     GROUP BY team
 )
 
 SELECT * 
-FROM summed
-ORDER BY total_yellows DESC 
+FROM averaged
+ORDER BY avg_corners DESC 
 LIMIT 10

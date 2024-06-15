@@ -1,5 +1,5 @@
 WITH source AS (
-    SELECT * FROM {{ ref('base__stadistics_2022') }}
+    SELECT * FROM {{ ref('base__stats') }}
 ),
 renamed AS (
     SELECT
@@ -10,7 +10,7 @@ renamed AS (
         b.country,
         ROW_NUMBER() OVER (PARTITION BY a.team1, a.team2 ORDER BY b.date) AS rn
     FROM source a 
-    INNER JOIN {{ ref('base__results') }} b 
+    INNER JOIN {{ ref('base__games') }} b 
         ON a.date=b.date 
 )
 

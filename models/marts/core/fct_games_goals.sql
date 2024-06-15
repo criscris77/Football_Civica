@@ -11,6 +11,12 @@ renamed AS (
         c.country_id,
         d.city_id,
         score_id,
+        a.scorer,
+        home_score,
+        away_score,
+        a.tournament,
+        a.home_team,
+        a.away_team,
         CONCAT(home_team, ' vs ', away_team) as match,
         CONCAT(home_score, '-', away_score) as result,
         CONCAT(a.city, ' (', a.country, ')') as place,
@@ -30,7 +36,7 @@ renamed AS (
     INNER JOIN {{ ref('dim_teams') }} f ON a.home_team = f.team
     INNER JOIN {{ ref('dim_teams') }} g ON a.away_team = g.team
     GROUP BY
-        1,2,3,4,5,6,7,8,9,10,11,12,13,14
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
     order by a.date DESC
 )
 SELECT * FROM renamed
