@@ -16,8 +16,8 @@ source as (
         b.team as team_score,
         scorer,
         minute 
-        from {{ ref('base__results') }} a 
-        inner join {{ ref('base__goalscorers') }} b on
+        from {{ ref('base__games') }} a 
+        inner join {{ ref('base__goals') }} b on
         a.game_id=b.game_id
 ),
 

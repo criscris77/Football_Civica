@@ -16,27 +16,7 @@ renamed as (
         possession_in_contest,
         number_of_goals_team1,
         number_of_goals_team2,
-        -- Convertir fecha al formato DD/MM/YYYY
-        CONCAT(
-            SUBSTRING(date, 1, 2), 
-            '/',
-            CASE
-                WHEN SUBSTRING(date, 4, 3) = 'JAN' THEN '01'
-                WHEN SUBSTRING(date, 4, 3) = 'FEB' THEN '02'
-                WHEN SUBSTRING(date, 4, 3) = 'MAR' THEN '03'
-                WHEN SUBSTRING(date, 4, 3) = 'APR' THEN '04'
-                WHEN SUBSTRING(date, 4, 3) = 'MAY' THEN '05'
-                WHEN SUBSTRING(date, 4, 3) = 'JUN' THEN '06'
-                WHEN SUBSTRING(date, 4, 3) = 'JUL' THEN '07'
-                WHEN SUBSTRING(date, 4, 3) = 'AUG' THEN '08'
-                WHEN SUBSTRING(date, 4, 3) = 'SEP' THEN '09'
-                WHEN SUBSTRING(date, 4, 3) = 'OCT' THEN '10'
-                WHEN SUBSTRING(date, 4, 3) = 'NOV' THEN '11'
-                WHEN SUBSTRING(date, 4, 3) = 'DEC' THEN '12'
-            END,
-            '/',
-            SUBSTRING(date, -4)
-        ) AS date,
+        TRY_TO_DATE(date, 'DD MON YYYY') as date ,
         hour,
         category,
         total_attempts_team1,

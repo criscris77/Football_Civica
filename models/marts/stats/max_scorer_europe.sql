@@ -1,19 +1,7 @@
-with 
+{{ config(materialized='table') }}
 
-source as (
-
-    select * from {{ ref('fct_games') }}
-),
-
-renamed as (
-    
-    SELECT SCORER,COUNT(*) AS NUM_GOLES 
-    FROM source
-    WHERE TOURNAMENT='UEFA Euro'
-    GROUP BY SCORER
-    ORDER BY NUM_GOLES DESC 
-    LIMIT 10
-
+WITH top_scorers AS (
+    {{ calculate_top_goal_scorers('UEFA Euro') }}
 )
 
-select * from renamed
+SELECT * FROM top_scorers

@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select distinct country from {{ ref('base__results') }}
+    select distinct country from {{ ref('base__games') }}
 
 ),
 

@@ -1,12 +1,12 @@
 WITH source AS (
     SELECT * 
-    FROM {{ ref('fct_stats_FIFAWorldCup_QATAR_2022') }}
+    FROM {{ ref('fct_stats') }}
 ),
 
 renamed AS (
     SELECT 
         team1 AS team, 
-        SUM((CORNERS_TEAM1)) AS CORNERS
+        SUM(RED_CARDS_TEAM1) AS reds
     FROM source
     GROUP BY team1
 
@@ -14,7 +14,7 @@ renamed AS (
 
     SELECT 
         team2 AS team, 
-        SUM(CORNERS_TEAM2) AS CORNERS
+        SUM(RED_CARDS_TEAM2) AS reds
     FROM source
     GROUP BY team2
 ),
@@ -22,12 +22,12 @@ renamed AS (
 summed AS (
     SELECT 
         team, 
-        SUM(CORNERS) AS total_CORNERS
+        SUM(reds) AS total_reds
     FROM renamed
     GROUP BY team
 )
 
 SELECT * 
 FROM summed
-ORDER BY total_CORNERS DESC 
+ORDER BY total_reds DESC 
 LIMIT 10

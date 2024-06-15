@@ -1,13 +1,12 @@
 with 
 
 source as (
-    select * from {{ ref('stg_football__games') }}
+    select * from {{ ref('stg_football__games_goals') }}
 ),
 
 renamed as (
     select
         game_id,
-        a.date,
         e.date_id,
         a.home_team,
         f.team_id as team_id_home,
@@ -22,6 +21,7 @@ renamed as (
             when away_score > home_score then away_team
             else 'draw'
         end as winner,
+        a.date,
         a.tournament,
         b.tournament_id,
         a.country,

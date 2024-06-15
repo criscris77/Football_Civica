@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select distinct city from {{ ref('base__results') }}
+    select distinct city from {{ ref('base__games') }}
 
 ),
 

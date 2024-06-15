@@ -2,7 +2,7 @@
 
 WITH source AS (
     SELECT * 
-    FROM {{ ref('fct_stats_FIFAWorldCup_QATAR_2022') }}
+    FROM {{ ref('fct_stats') }}
 ),
 
 renamed AS (

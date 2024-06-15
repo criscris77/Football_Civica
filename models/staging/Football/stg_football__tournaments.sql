@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select distinct tournament  from {{ ref('base__results') }}
+    select distinct tournament  from {{ ref('base__games') }}
 
 ),
 
