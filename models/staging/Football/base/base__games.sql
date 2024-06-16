@@ -10,7 +10,7 @@ renamed as (
 
     select
         {{ dbt_utils.generate_surrogate_key(['date','home_team','away_team']) }} as game_id,
-        date,
+        TO_DATE(date) as date,
         home_team,
         away_team,
         CAST(home_score AS NUMBER) AS home_score,

@@ -9,12 +9,15 @@ models:
         description: "Unique identifier for the game."
         tests:
           - not_null
-              
       - name: score_id
         data_type: varchar
         description: "Unique identifier for the score."
         tests:
           - not_null
+          - unique
+        meta:
+          primary_key: true
+
       - name: date
         data_type: date
         description: "Date of the game."
@@ -38,9 +41,10 @@ models:
       - name: minute
         data_type: number
         description: "Minute in which the goal was scored."
+
       - name: _fivetran_synced
         data_type: timestamp_tz
-        description: "date when data was arrived"
+        description: "Date when data was arrived"
 
   - name: base__games
     description: "Contains the results of each game."
@@ -50,6 +54,10 @@ models:
         description: "Unique identifier for the game."
         tests:
           - not_null
+          - unique
+        meta:
+          primary_key: true
+
       - name: date
         data_type: varchar
         description: "Date of the game."
@@ -81,9 +89,10 @@ models:
       - name: country
         data_type: varchar
         description: "Country where the game was played."
+
       - name: _fivetran_synced
         data_type: timestamp_tz
-        description: "date when data was arrived"
+        description: "Date when data was arrived"
 
 
   - name: base__stats

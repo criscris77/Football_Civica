@@ -16,7 +16,9 @@ renamed as (
         f.city_id,
         g.country_id,
         h.tournament_id,
-        a.*
+        a.*,
+        i.scorer,
+        i.minute
     from source a
     INNER JOIN {{ ref('dim_teams') }} b 
     ON a.TEAM1 = UPPER(b.team)
@@ -32,6 +34,8 @@ renamed as (
     ON a.country = g.country
     INNER JOIN {{ ref('dim_tournament') }} h
     ON a.tournament = h.tournament
+    INNER JOIN {{ ref('stg_football__games_goals') }} i
+    ON a.game_id = i.game_id
    
 )
 

@@ -7,15 +7,17 @@ source as (
 renamed as (
     select
         game_id,
+        score_id,
         e.date_id,
-        a.home_team,
         f.team_id as team_id_home,
-        a.away_team,
         g.team_id as team_id_away,
+        b.tournament_id,
+        c.country_id,
+        d.city_id,
+        a.home_team,
+        a.away_team,
         a.home_score,
         a.away_score,
-        CONCAT(home_team, ' vs ', away_team) as match,
-        CONCAT(home_score, '-', away_score) as result,
         case
             when home_score > away_score then home_team
             when away_score > home_score then away_team
@@ -23,16 +25,15 @@ renamed as (
         end as winner,
         a.date,
         a.tournament,
-        b.tournament_id,
         a.country,
-        c.country_id,
         a.city,
-        d.city_id,
-        CONCAT(a.city, ' (', a.country, ')') as place,
-        score_id,
         team_score,
         scorer,
         minute ,
+        CONCAT(home_team, ' vs ', away_team) as match,
+        CONCAT(home_score, '-', away_score) as result,
+        CONCAT(a.scorer, ' min ', a.minute, ' (', a.team_score, ')') as goal,
+        CONCAT(a.city, ' (', a.country, ')') as place,
         a._fivetran_synced
     from source a 
     inner join {{ ref('stg_football__tournaments') }} b 
