@@ -26,12 +26,12 @@ renamed as (
         _fivetran_synced
 
     from source
-    where tournament in ('Copa América','UEFA Euro','FIFA World Cup')
+    where tournament in ('Copa América','UEFA Euro','FIFA World Cup') 
 )
 
 select * from renamed
 {% if is_incremental() %}
 
-  where _fivetran_synced >= (select max(_fivetran_synced) from {{ this }})
+  where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
 
 {% endif %}
