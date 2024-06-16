@@ -1,8 +1,8 @@
-{{
+/*{{
   config(
     materialized='incremental'
   )
-}}
+}}*/
 WITH source AS (
     SELECT * FROM {{ ref('intermediate_football_games') }}
 ),
@@ -46,8 +46,8 @@ renamed AS (
     order by a.date DESC
 )
 SELECT * FROM renamed
-{% if is_incremental() %}
+/*{% if is_incremental() %}
 
   where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
 
-{% endif %}
+{% endif %}*/
