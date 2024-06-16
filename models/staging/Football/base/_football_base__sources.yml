@@ -64,7 +64,7 @@ sources:
             data_type: boolean
             description: "Indicates if the match was played at a neutral venue (true/false)."
       
-      - name: stadistics_2022
+      - name: statsqatar
         description: "Statistics from the 2022 international football matches."
         columns:
           - name: team1
