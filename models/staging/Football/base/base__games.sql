@@ -26,7 +26,7 @@ renamed as (
         _fivetran_synced
 
     from source
-    where tournament in ('Copa América','UEFA Euro','FIFA World Cup')
+    where tournament in ('Copa América','UEFA Euro','FIFA World Cup') 
 )
 
 select * from renamed
