@@ -1,87 +1,452 @@
 version: 2
 
 models:
-  - name: dim_city
-    description: "Dimension table containing information about cities."
+  - name: fct_stats
+    description: "Fact table for general match statistics."
     columns:
-      - name: city_id
+      - name: team_id_home
         data_type: varchar
-        description: "Unique identifier for the city."
+        description: "ID of the home team."
 
-      - name: city
+      - name: team_id_away
         data_type: varchar
-        description: "Name of the city."
-
-  - name: dim_country
-    description: "Dimension table containing information about countries."
-    columns:
-      - name: country_id
-        data_type: varchar
-        description: "Unique identifier for the country."
-
-      - name: country
-        data_type: varchar
-        description: "Name of the country."
-
-  - name: dim_teams
-    description: "Dimension table containing information about football teams."
-    columns:
-      - name: team_id
-        data_type: varchar
-        description: "Unique identifier for the team."
-
-      - name: team
-        data_type: varchar
-        description: "Name of the team."
-
-  - name: dim_time
-    description: "Dimension table containing time-related information."
-    columns:
-      - name: date_timezone
-        data_type: timestamp_tz
-        description: "Date and time with timezone information."
-
-      - name: date
-        data_type: varchar
-        description: "Date in YYYY-MM-DD format."
+        description: "ID of the away team."
 
       - name: date_id
         data_type: varchar
-        description: "Identifier for the date."
+        description: "Date ID of the match."
 
-      - name: year
-        data_type: number
-        description: "Year of the date."
+      - name: category_id
+        data_type: varchar
+        description: "Category ID of the match."
 
-      - name: month
-        data_type: number
-        description: "Month of the date."
+      - name: city_id
+        data_type: varchar
+        description: "City ID of the match."
 
-      - name: day
-        data_type: number
-        description: "Day of the date."
+      - name: country_id
+        data_type: varchar
+        description: "Country ID of the match."
 
-  - name: dim_tournament
-    description: "Dimension table containing information about football tournaments."
-    columns:
       - name: tournament_id
         data_type: varchar
-        description: "Unique identifier for the tournament."
+        description: "Tournament ID of the match."
+
+      - name: game_id
+        data_type: varchar
+        description: "Unique ID of the match."
+
+      - name: team1
+        data_type: varchar
+        description: "Name of the home team."
+
+      - name: team2
+        data_type: varchar
+        description: "Name of the away team."
+
+      - name: possession_team1
+        data_type: varchar
+        description: "Possession by the home team."
+
+      - name: possession_team2
+        data_type: varchar
+        description: "Possession by the away team."
+
+      - name: possession_in_contest
+        data_type: varchar
+        description: "Overall possession in the match."
+
+      - name: number_of_goals_team1
+        data_type: number
+        description: "Number of goals scored by the home team."
+
+      - name: number_of_goals_team2
+        data_type: number
+        description: "Number of goals scored by the away team."
+
+      - name: date
+        data_type: date
+        description: "Date of the match."
+
+      - name: hour
+        data_type: varchar
+        description: "Hour of the match."
+
+      - name: category
+        data_type: varchar
+        description: "Category of the match."
+
+      - name: total_attempts_team1
+        data_type: number
+        description: "Total attempts by the home team."
+
+      - name: total_attempts_team2
+        data_type: number
+        description: "Total attempts by the away team."
+
+      - name: conceded_team1
+        data_type: number
+        description: "Goals conceded by the home team."
+
+      - name: conceded_team2
+        data_type: number
+        description: "Goals conceded by the away team."
+
+      - name: goal_inside_the_penalty_area_team1
+        data_type: number
+        description: "Goals scored inside the penalty area by the home team."
+
+      - name: goal_inside_the_penalty_area_team2
+        data_type: number
+        description: "Goals scored inside the penalty area by the away team."
+
+      - name: goal_outside_the_penalty_area_team1
+        data_type: number
+        description: "Goals scored outside the penalty area by the home team."
+
+      - name: goal_outside_the_penalty_area_team2
+        data_type: number
+        description: "Goals scored outside the penalty area by the away team."
+
+      - name: assists_team1
+        data_type: number
+        description: "Assists by players of the home team."
+
+      - name: assists_team2
+        data_type: number
+        description: "Assists by players of the away team."
+
+      - name: on_target_attempts_team1
+        data_type: number
+        description: "Attempts on target by the home team."
+
+      - name: on_target_attempts_team2
+        data_type: number
+        description: "Attempts on target by the away team."
+
+      - name: off_target_attempts_team1
+        data_type: number
+        description: "Attempts off target by the home team."
+
+      - name: off_target_attempts_team2
+        data_type: number
+        description: "Attempts off target by the away team."
+
+      - name: attempts_inside_the_penalty_area_team1
+        data_type: number
+        description: "Attempts inside the penalty area by the home team."
+
+      - name: attempts_inside_the_penalty_area__team2
+        data_type: number
+        description: "Attempts inside the penalty area by the away team."
+
+      - name: attempts_outside_the_penalty_area__team1
+        data_type: number
+        description: "Attempts outside the penalty area by the home team."
+
+      - name: attempts_outside_the_penalty_area__team2
+        data_type: number
+        description: "Attempts outside the penalty area by the away team."
+
+      - name: left_channel_team1
+        data_type: number
+        description: "Actions in the left channel by the home team."
+
+      - name: left_channel_team2
+        data_type: number
+        description: "Actions in the left channel by the away team."
+
+      - name: left_inside_channel_team1
+        data_type: number
+        description: "Actions in the left inside channel by the home team."
+
+      - name: left_inside_channel_team2
+        data_type: number
+        description: "Actions in the left inside channel by the away team."
+
+      - name: central_channel_team1
+        data_type: number
+        description: "Actions in the central channel by the home team."
+
+      - name: central_channel_team2
+        data_type: number
+        description: "Actions in the central channel by the away team."
+
+      - name: right_inside_channel_team1
+        data_type: number
+        description: "Actions in the right inside channel by the home team."
+
+      - name: right_inside_channel_team2
+        data_type: number
+        description: "Actions in the right inside channel by the away team."
+
+      - name: right_channel_team1
+        data_type: number
+        description: "Actions in the right channel by the home team."
+
+      - name: right_channel_team2
+        data_type: number
+        description: "Actions in the right channel by the away team."
+
+      - name: total_offers_to_receive_team1
+        data_type: number
+        description: "Total offers to receive by the home team."
+
+      - name: total_offers_to_receive_team2
+        data_type: number
+        description: "Total offers to receive by the away team."
+
+      - name: inbehind_offers_to_receive_team1
+        data_type: number
+        description: "Offers to receive in behind by the home team."
+
+      - name: inbehind_offers_to_receive_team2
+        data_type: number
+        description: "Offers to receive in behind by the away team."
+
+      - name: inbetween_offers_to_receive_team1
+        data_type: number
+        description: "Offers to receive in between lines by the home team."
+
+      - name: inbetween_offers_to_receive_team2
+        data_type: number
+        description: "Offers to receive in between lines by the away team."
+
+      - name: infront_offers_to_receive_team1
+        data_type: number
+        description: "Offers to receive in front by the home team."
+
+      - name: infront_offers_to_receive_team2
+        data_type: number
+        description: "Offers to receive in front by the away team."
+
+      - name: receptions_between_midfield_and_defensive_lines_team1
+        data_type: number
+        description: "Receptions between midfield and defensive lines by the home team."
+
+      - name: receptions_between_midfield_and_defensive_lines_team2
+        data_type: number
+        description: "Receptions between midfield and defensive lines by the away team."
+
+      - name: attempted_line_breaks_team1
+        data_type: number
+        description: "Attempted line breaks by the home team."
+
+      - name: attempted_line_breaks_team2
+        data_type: number
+        description: "Attempted line breaks by the away team."
+
+      - name: completed_line_breaksteam1
+        data_type: number
+        description: "Completed line breaks by the home team."
+
+      - name: completed_line_breaks_team2
+        data_type: number
+        description: "Completed line breaks by the away team."
+
+      - name: attempted_defensive_line_breaks_team1
+        data_type: number
+        description: "Attempted defensive line breaks by the home team."
+
+      - name: attempted_defensive_line_breaks_team2
+        data_type: number
+        description: "Attempted defensive line breaks by the away team."
+
+      - name: completed_defensive_line_breaksteam1
+        data_type: number
+        description: "Completed defensive line breaks by the home team."
+
+      - name: completed_defensive_line_breaks_team2
+        data_type: number
+        description: "Completed defensive line breaks by the away team."
+
+      - name: yellow_cards_team1
+        data_type: number
+        description: "Yellow cards received by players of the home team."
+
+      - name: yellow_cards_team2
+        data_type: number
+        description: "Yellow cards received by players of the away team."
+
+      - name: red_cards_team1
+        data_type: number
+        description: "Red cards received by players of the home team."
+
+      - name: red_cards_team2
+        data_type: number
+        description: "Red cards received by players of the away team."
+
+      - name: fouls_against_team1
+        data_type: number
+        description: "Fouls committed against the home team."
+
+      - name: fouls_against_team2
+        data_type: number
+        description: "Fouls committed against the away team."
+
+      - name: offsides_team1
+        data_type: number
+        description: "Offsides committed by the home team."
+
+      - name: offsides_team2
+        data_type: number
+        description: "Offsides committed by the away team."
+
+      - name: passes_team1
+        data_type: number
+        description: "Total passes made by the home team."
+
+      - name: passes_team2
+        data_type: number
+        description: "Total passes made by the away team."
+
+      - name: passes_completed_team1
+        data_type: number
+        description: "Total passes completed by the home team."
+
+      - name: passes_completed_team2
+        data_type: number
+        description: "Total passes completed by the away team."
+
+      - name: crosses_team1
+        data_type: number
+        description: "Total crosses made by the home team."
+
+      - name: crosses_team2
+        data_type: number
+        description: "Total crosses made by the away team."
+
+      - name: crosses_completed_team1
+        data_type: number
+        description: "Total crosses completed by the home team."
+
+      - name: crosses_completed_team2
+        data_type: number
+        description: "Total crosses completed by the away team."
+
+      - name: switches_of_play_completed_team1
+        data_type: number
+        description: "Switches of play completed by the home team."
+
+      - name: switches_of_play_completed_team2
+        data_type: number
+        description: "Switches of play completed by the away team."
+
+      - name: corners_team1
+        data_type: number
+        description: "Total corners awarded to the home team."
+
+      - name: corners_team2
+        data_type: number
+        description: "Total corners awarded to the away team."
+
+      - name: free_kicks_team1
+        data_type: number
+        description: "Total free kicks awarded to the home team."
+
+      - name: free_kicks_team2
+        data_type: number
+        description: "Total free kicks awarded to the away team."
+
+      - name: penalties_scored_team1
+        data_type: number
+        description: "Total penalties scored by the home team."
+
+      - name: penalties_scored_team2
+        data_type: number
+        description: "Total penalties scored by the away team."
+
+      - name: goal_preventions_team1
+        data_type: number
+        description: "Goal preventions by the home team."
+
+      - name: goal_preventions_team2
+        data_type: number
+        description: "Goal preventions by the away team."
+
+      - name: own_goals_team1
+        data_type: number
+        description: "Own goals scored by players of the home team."
+
+      - name: own_goals_team2
+        data_type: number
+        description: "Own goals scored by players of the away team."
+
+      - name: forced_turnovers_team1
+        data_type: number
+        description: "Forced turnovers by the home team."
+
+      - name: forced_turnovers_team2
+        data_type: number
+        description: "Forced turnovers by the away team."
+
+      - name: defensive_pressures_applied_team1
+        data_type: number
+        description: "Defensive pressures applied by the home team."
+
+      - name: defensive_pressures_applied_team2
+        data_type: number
+        description: "Defensive pressures applied by the away team."
 
       - name: tournament
         data_type: varchar
         description: "Name of the tournament."
 
-  - name: dim_games
-    description: "Dimension table containing information about football games."
+      - name: city
+        data_type: varchar
+        description: "Name of the city where the match was held."
+
+      - name: country
+        data_type: varchar
+        description: "Name of the country where the match was held."
+
+      - name: rn
+        data_type: number
+        description: "Row number for ordering purposes."
+
+      - name: scorer
+        data_type: varchar
+        description: "Scorer of a particular event (goal, assist, etc.)."
+
+      - name: minute
+        data_type: number
+        description: "Minute in which the event occurred."
+
+  - name: fct_games_goals
+    description: "Fact table for specific match goals."
+    
     columns:
       - name: game_id
         data_type: varchar
-        description: "Unique identifier for the game."
+        description: "Unique ID of the match."
 
-      - name: date
+      - name: score_id
         data_type: varchar
-        description: "Date of the game."
+        description: "ID of the score."
+
+      - name: date_id
+        data_type: varchar
+        description: "Date ID of the match."
+
+      - name: team_id_home
+        data_type: varchar
+        description: "ID of the home team."
+
+      - name: team_id_away
+        data_type: varchar
+        description: "ID of the away team."
+
+      - name: tournament_id
+        data_type: varchar
+        description: "Tournament ID of the match."
+
+      - name: country_id
+        data_type: varchar
+        description: "Country ID of the match."
+
+      - name: city_id
+        data_type: varchar
+        description: "City ID of the match."
 
       - name: home_team
         data_type: varchar
@@ -99,125 +464,141 @@ models:
         data_type: number
         description: "Score of the away team."
 
+      - name: winner
+        data_type: varchar
+        description: "Winner of the match."
+
+      - name: date
+        data_type: date
+        description: "Date of the match."
+
       - name: tournament
         data_type: varchar
         description: "Name of the tournament."
 
-      - name: city
-        data_type: varchar
-        description: "City where the game was played."
-
       - name: country
         data_type: varchar
-        description: "Country where the game was played."
+        description: "Name of the country where the match was held."
 
-      - name: score_id
+      - name: city
         data_type: varchar
-        description: "Identifier for the score."
+        description: "Name of the city where the match was held."
 
       - name: team_score
         data_type: varchar
-        description: "Name of the team that scored."
+        description: "Scored by which team."
 
       - name: scorer
         data_type: varchar
-        description: "Name of the player who scored."
+        description: "Scorer of a particular event (goal, assist, etc.)."
 
       - name: minute
         data_type: number
-        description: "Minute in which the goal was scored."
-
-
-  - name: fct_games
-    description: "Fact table containing detailed information about football games."
-    columns:
-      - name: game_id
-        data_type: varchar
-        description: "Unique identifier for the game."
-        constraints:
-          - name: pk_game_id
-            type: unique
-
-      - name: date_id
-        data_type: varchar
-        description: "Identifier for the date."
-        constraints:
-          - name: fk_date_id
-            type: foreign_key
-            ref: dim_time.date_id
-
-      - name: team_id_home
-        data_type: varchar
-        description: "Identifier for the home team."
-        constraints:
-          - name: fk_team_id_home
-            type: foreign_key
-            ref: dim_teams.team_id
-
-      - name: team_id_away
-        data_type: varchar
-        description: "Identifier for the away team."
-        constraints:
-          - name: fk_team_id_away
-            type: foreign_key
-            ref: dim_teams.team_id
-
-      - name: home_score
-        data_type: number
-        description: "Score of the home team."
-
-      - name: away_score
-        data_type: number
-        description: "Score of the away team."
+        description: "Minute in which the event occurred."
 
       - name: match
         data_type: varchar
-        description: "Type of match (e.g., friendly, league)."
+        description: "Name of the match."
 
       - name: result
         data_type: varchar
         description: "Result of the match."
 
-
-
-      - name: tournament_id
+      - name: goal
         data_type: varchar
-        description: "Identifier for the tournament."
-        constraints:
-          - name: fk_tournament_id
-            type: foreign_key
-            ref: dim_tournament.tournament_id
+        description: "Goal of the match."
 
-      - name: country_id
+      - name: place
         data_type: varchar
-        description: "Identifier for the country."
-        constraints:
-          - name: fk_country_id
-            type: foreign_key
-            ref: dim_country.country_id
+        description: "Place of the event."
 
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: "Timestamp when data was synced by Fivetran."
+
+
+  - name: dim_time
+    description: "Dimension table for time-related attributes."
+    columns:
+      - name: date_timezone
+        data_type: timestamp_tz
+        description: "Timestamp with timezone."
+
+      - name: date
+        data_type: date
+        description: "Date without timezone."
+
+      - name: fecha
+        data_type: varchar
+        description: "Additional date information."
+
+      - name: date_id
+        data_type: varchar
+        description: "Unique ID for the date."
+
+      - name: year
+        data_type: number
+        description: "Year of the date."
+
+      - name: month
+        data_type: number
+        description: "Month of the date."
+
+      - name: day
+        data_type: number
+        description: "Day of the date."
+
+  - name: dim_city
+    description: "Dimension table for cities."
+    columns:
       - name: city_id
         data_type: varchar
-        description: "Identifier for the city."
-        constraints:
-          - name: fk_city_id
-            type: foreign_key
-            ref: dim_city.city_id
+        description: "Unique ID for the city."
 
-      - name: score_id
+      - name: city
         data_type: varchar
-        description: "Identifier for the score."
-  - name: dim__category
-    description: "Table for football categories."
+        description: "Name of the city."
+
+  - name: dim_country
+    description: "Dimension table for countries."
     columns:
-    - name: category_id
-      data_type: varchar
-      description: "Unique identifier for the category."
-      
-    - name: category
-      data_type: varchar
-      description: "Name of the football category."
+      - name: country_id
+        data_type: varchar
+        description: "Unique ID for the country."
 
+      - name: country
+        data_type: varchar
+        description: "Name of the country."
 
+  - name: dim_teams
+    description: "Dimension table for teams."
+    columns:
+      - name: team_id
+        data_type: varchar
+        description: "Unique ID for the team."
 
+      - name: team
+        data_type: varchar
+        description: "Name of the team."
 
+  - name: dim_tournament
+    description: "Dimension table for tournaments."
+    columns:
+      - name: tournament_id
+        data_type: varchar
+        description: "Unique ID for the tournament."
+
+      - name: tournament
+        data_type: varchar
+        description: "Name of the tournament."
+
+  - name: dim_category
+    description: "Dimension table for match categories."
+    columns:
+      - name: category_id
+        data_type: varchar
+        description: "Unique ID for the category."
+
+      - name: category
+        data_type: varchar
+        description: "Name of the category."
