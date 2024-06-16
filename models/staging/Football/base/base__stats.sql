@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('football_source', 'stadistics_2022') }}
+    select * from {{ source('football_source', 'statsqatar') }}
 
 ),
 
