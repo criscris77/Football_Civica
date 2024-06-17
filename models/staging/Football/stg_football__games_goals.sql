@@ -1,9 +1,14 @@
+{{ config(
+    materialized='incremental',
+    unique_key='score_id'
+) }}
 with 
 
 source as (
 
     select 
         a.game_id,
+        score_id,
         a.date,
         a.home_team,
         a.away_team,
@@ -12,7 +17,6 @@ source as (
         tournament,
         city,
         country,
-        score_id,
         b.team as team_score,
         scorer,
         minute ,
@@ -31,3 +35,6 @@ renamed as (
 )
 
 select * from renamed
+{% if is_incremental() %}
+    WHERE _fivetran_synced > (SELECT MAX(_fivetran_synced) FROM {{ this }} )
+{% endif %}
