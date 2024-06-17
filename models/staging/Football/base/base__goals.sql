@@ -1,7 +1,3 @@
-{{ config(
-    materialized='incremental',
-    unique_key='score_id'
-) }}
 with source as (
     select * from {{ source('football_source', 'goalscorers') }}
 ),
@@ -24,7 +20,5 @@ renamed as (
     from source
 )
 select * from renamed
-{% if is_incremental() %}
-    WHERE _fivetran_synced > (SELECT MAX(_fivetran_synced) FROM {{ this }} )
-{% endif %}
+
 
