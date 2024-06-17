@@ -25,10 +25,10 @@ models:
       Football:
         +materialized: view
       base:
-        +materialized: ephemeral
+        +materialized: view
     intermediate:
       +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
-      +materialized: ephemeral
+      +materialized: view
     marts:
       +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
       +materialized: table
