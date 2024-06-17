@@ -1,3 +1,7 @@
+{{ config(
+    materialized='incremental',
+    unique_key='game_id'
+) }}
 with 
 
 source as (
@@ -25,3 +29,6 @@ renamed as (
 )
 
 select * from renamed
+{% if is_incremental() %}
+    WHERE _fivetran_synced > (SELECT MAX(_fivetran_synced) FROM {{ this }} )
+{% endif %}
