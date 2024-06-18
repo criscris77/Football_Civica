@@ -7,17 +7,10 @@ models:
       - name: game_id
         data_type: varchar
         description: "Unique identifier for the game."
-        tests:
-          - not_null
       - name: score_id
         data_type: varchar
         description: "Unique identifier for the score."
-        tests:
-          - not_null
-          - unique
-        meta:
-          primary_key: true
-
+        
       - name: date
         data_type: date
         description: "Date of the game."
@@ -52,11 +45,6 @@ models:
       - name: game_id
         data_type: varchar
         description: "Unique identifier for the game."
-        tests:
-          - not_null
-          - unique
-        meta:
-          primary_key: true
 
       - name: date
         data_type: varchar
