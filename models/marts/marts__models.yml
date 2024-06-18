@@ -111,18 +111,30 @@ models:
       - name: assists_team1
         data_type: number
         description: "Assists by players of the home team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: assists_team2
         data_type: number
         description: "Assists by players of the away team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: on_target_attempts_team1
         data_type: number
         description: "Attempts on target by the home team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: on_target_attempts_team2
         data_type: number
         description: "Attempts on target by the away team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: off_target_attempts_team1
         data_type: number
@@ -263,18 +275,30 @@ models:
       - name: yellow_cards_team1
         data_type: number
         description: "Yellow cards received by players of the home team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: yellow_cards_team2
         data_type: number
         description: "Yellow cards received by players of the away team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: red_cards_team1
         data_type: number
         description: "Red cards received by players of the home team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: red_cards_team2
         data_type: number
         description: "Red cards received by players of the away team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: fouls_against_team1
         data_type: number
@@ -287,10 +311,16 @@ models:
       - name: offsides_team1
         data_type: number
         description: "Offsides committed by the home team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: offsides_team2
         data_type: number
         description: "Offsides committed by the away team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: passes_team1
         data_type: number
@@ -303,10 +333,16 @@ models:
       - name: passes_completed_team1
         data_type: number
         description: "Total passes completed by the home team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: passes_completed_team2
         data_type: number
         description: "Total passes completed by the away team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: crosses_team1
         data_type: number
@@ -335,10 +371,16 @@ models:
       - name: corners_team1
         data_type: number
         description: "Total corners awarded to the home team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: corners_team2
         data_type: number
         description: "Total corners awarded to the away team."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
 
       - name: free_kicks_team1
         data_type: number
@@ -411,6 +453,9 @@ models:
       - name: minute
         data_type: number
         description: "Minute in which the event occurred."
+        
+    
+    
 
   - name: fct_games_goals
     description: "Fact table for specific match goals."
@@ -419,14 +464,22 @@ models:
       - name: game_id
         data_type: varchar
         description: "Unique ID of the match."
+        
 
       - name: score_id
         data_type: varchar
         description: "ID of the score."
+        
 
       - name: date_id
         data_type: varchar
         description: "Date ID of the match."
+        constraints:
+        - name: fk_date_id
+          type: foreign_key
+          ref: 
+            table: dim_time  
+            column: time_id  
 
       - name: team_id_home
         data_type: varchar
@@ -439,14 +492,32 @@ models:
       - name: tournament_id
         data_type: varchar
         description: "Tournament ID of the match."
+        constraints:
+        - name: fk_tournament_id
+          type: foreign_key
+          ref: 
+            table: dim_tournament  
+            column: tournament_id  
 
       - name: country_id
         data_type: varchar
         description: "Country ID of the match."
+        constraints:
+        - name: fk_country_id
+          type: foreign_key
+          ref: 
+            table: dim_country 
+            column: country_id 
 
       - name: city_id
         data_type: varchar
         description: "City ID of the match."
+        constraints:
+        - name: fk_city_id
+          type: foreign_key
+          ref: 
+            table: dim_city 
+            column: city_id 
 
       - name: home_team
         data_type: varchar

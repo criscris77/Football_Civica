@@ -9,6 +9,7 @@ models:
         description: "Unique identifier for the city."
         tests:
           - not_null
+          - unique
       - name: city
         data_type: varchar
         description: "Name of the city."
@@ -21,103 +22,69 @@ models:
         description: "Unique identifier for the country."
         tests:
           - not_null
+          - unique
       - name: country
         data_type: varchar
         description: "Name of the country."
 
-  - name: stg_football__goalscorers
-    description: "Contains data on goalscorers for each game."
-    columns:
-      - name: game_id
-        data_type: varchar
-        description: "Unique identifier for the game."
-        tests:
-          - not_null
-      - name: score_id
-        data_type: varchar
-        description: "Unique identifier for the score."
-        tests:
-          - not_null
-      - name: date
-        data_type: date
-        description: "Date of the game."
-
-      - name: home_team
-        data_type: varchar
-        description: "Name of the home team."
-
-      - name: away_team
-        data_type: varchar
-        description: "Name of the away team."
-
-      - name: team
-        data_type: varchar
-        description: "Name of the team that scored."
-
-      - name: scorer
-        data_type: varchar
-        description: "Name of the player who scored."
-
-      - name: minute
-        data_type: number
-        description: "Minute in which the goal was scored."
-
-  - name: stg_football__games
+  - name: stg_football__games_goals
     description: "Contains the results of each game."
     columns:
-      - name: game_id
-        data_type: varchar
-        description: "Unique identifier for the game."
-        tests:
-          - not_null
-      - name: date
-        data_type: varchar
-        description: "Date of the game."
+    - name: game_id
+      data_type: varchar
+      description: "Unique identifier for the game."
+      tests:
+        - not_null
+    - name: date
+      data_type: varchar
+      description: "Date of the game."
+    - name: home_team
+      data_type: varchar
+      description: "Name of the home team."
+    - name: away_team
+      data_type: varchar
+      description: "Name of the away team."
+    - name: home_score
+      data_type: number
+      description: "Score of the home team."
+      tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
+    - name: away_score
+      data_type: number
+      description: "Score of the away team."
+      tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
+    - name: tournament
+      data_type: varchar
+      description: "Name of the tournament."
+    - name: city
+      data_type: varchar
+      description: "City where the game was played."
+    - name: country
+      data_type: varchar
+      description: "Country where the game was played."
+    - name: score_id
+      data_type: varchar
+      description: "Unique identifier for the score."
+      tests:
+        - not_null
+        - unique
+    - name: team_score
+      data_type: varchar
+      description: "Name of the team that scored."
+    - name: scorer
+      data_type: varchar
+      description: "Name of the player who scored."
+    - name: minute
+      data_type: number
+      description: "Minute in which the goal was scored including extra time"
+      tests:
+        - dbt_utils.expression_is_true:
+            expression: "BETWEEN 0 AND 130"
 
-      - name: home_team
-        data_type: varchar
-        description: "Name of the home team."
 
-      - name: away_team
-        data_type: varchar
-        description: "Name of the away team."
-
-      - name: home_score
-        data_type: number
-        description: "Score of the home team."
-
-      - name: away_score
-        data_type: number
-        description: "Score of the away team."
-
-      - name: tournament
-        data_type: varchar
-        description: "Name of the tournament."
-
-      - name: city
-        data_type: varchar
-        description: "City where the game was played."
-
-      - name: country
-        data_type: varchar
-        description: "Country where the game was played."
-
-      - name: score_id
-        data_type: varchar
-        description: "Unique identifier for the score."
-        tests:
-          - not_null
-      - name: team_score
-        data_type: varchar
-        description: "Name of the team that scored."
-
-      - name: scorer
-        data_type: varchar
-        description: "Name of the player who scored."
-
-      - name: minute
-        data_type: number
-        description: "Minute in which the goal was scored."
 
   - name: stg_football__teams
     description: "Contains data related to football teams."
@@ -127,6 +94,7 @@ models:
         description: "Unique identifier for the team."
         tests:
           - not_null
+          - unique
       - name: team
         data_type: varchar
         description: "Name of the team."
@@ -167,37 +135,20 @@ models:
         description: "Unique identifier for the tournament."
         tests:
           - not_null
+          - unique
       - name: tournament
         data_type: varchar
         description: "Name of the tournament."
 
 
-  - name: stg_football__shootouts
-    description: "Contains data on shootouts."
-    columns:
-      - name: date
-        data_type: date
-        description: "Date of the shootout."
-
-      - name: home_team
-        data_type: varchar
-        description: "Name of the home team."
-
-      - name: away_team
-        data_type: varchar
-        description: "Name of the away team."
-
-      - name: winner
-        data_type: varchar
-        description: "Name of the team that won the shootout."
-
-      - name: first_shooter
-        data_type: varchar
-        description: "Name of the first shooter in the shootout."
-
-  - name: stg_football__stadistics_2022
+  - name: stg_football__stats
     description: "Contains statistics for games played in 2022."
     columns:
+      - name: game_id
+        data_type: varchar
+        description: "Unique identifier for the game."
+        tests:
+          - not_null
       - name: team1
         data_type: varchar
         description: "Name of the first team."
@@ -213,7 +164,7 @@ models:
       - name: possession_team2
         data_type: varchar
         description: "Possession percentage of the second team."
-
+        
       - name: possession_in_contest
         data_type: varchar
         description: "Percentage of possession in contest."
@@ -221,14 +172,21 @@ models:
       - name: number_of_goals_team1
         data_type: number
         description: "Number of goals scored by the first team."
-
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
       - name: number_of_goals_team2
         data_type: number
         description: "Number of goals scored by the second team."
-
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: ">= 0"
       - name: date
         data_type: varchar
         description: "Date of the game."
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: "between '2022-11-20' and '2022-12-18'"
 
       - name: hour
         data_type: varchar
@@ -237,6 +195,7 @@ models:
       - name: category
         data_type: varchar
         description: "Category of the game."
+        
 
       - name: total_attempts_team1
         data_type: number
@@ -549,13 +508,18 @@ models:
       - name: defensive_pressures_applied_team2
         data_type: number
         description: "Defensive pressures applied by the second team."
+    
+
   - name: stg_football__category
     description: "Table for football categories."
     columns:
     - name: category_id
       data_type: varchar
       description: "Unique identifier for the category."
-      
+      tests:
+        - not_null
+        - unique
+        
     - name: category
       data_type: varchar
       description: "Name of the football category."

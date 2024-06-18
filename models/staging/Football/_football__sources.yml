@@ -33,6 +33,10 @@ sources:
           - name: penalty
             data_type: boolean
             description: "Indicates if the goal was scored from a penalty kick (true/false)."
+          - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Indicates date when data is arrived."
+
       - name: results
         description: "Results of the international football matches."
         columns:
@@ -63,6 +67,9 @@ sources:
           - name: neutral
             data_type: boolean
             description: "Indicates if the match was played at a neutral venue (true/false)."
+          - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Indicates date when data is arrived."
       
       - name: statsqatar
         description: "Statistics from the 2022 international football matches."
